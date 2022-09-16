@@ -31,4 +31,4 @@ apt install -y zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-
 apt autoremove -y xdg-desktop-portal-gtk
 
 #Szükségtelen programok eltávolítása
-apt autoremove –-purge -y nano
+apt autoremove –-purge -y nano vim xterm
