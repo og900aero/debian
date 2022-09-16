@@ -1,8 +1,31 @@
 #!/bin/bash
 
-apt install imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs zstd fzf mediainfo ueberzug bspwm sxhkd exa subversion i3lock xautolock dunst libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
-apt install go-mtpfs archivemount google-chrome-stable polybar inxi micro network-manager network-manager-openvpn network-manager-gnome build-essential libnotify-bin git rsync cmake xorg xserver-xorg-video-intel xserver-xorg-video-nouveau xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
-apt install pulseaudio pavucontrol pulseaudio-module-bluetooth blueman
-apt install libmtp-common psmisc xdg-user-dirs wget traceroute man-db bash-completion adb fastboot dbus-x11 fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg
+# Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
+apt install -y xorg xserver-xorg-video-intel xserver-xorg-video-nouveau xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
 
-apt remove xdg-desktop-portal-gtk
+# Hálózatkezelés
+apt install -y network-manager network-manager-openvpn network-manager-gnome
+
+# Hangkeltés + bluetooth
+apt install -y pulseaudio pavucontrol pulseaudio-module-bluetooth blueman
+
+# Ablakezelő szoftver és kiegészítései
+apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
+
+# Fontok
+apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
+
+# Filekezelő program és kiegészítései
+apt install -y vifm trash-cli fuse-zip curlftpfs sshfs go-mtpfs libmtp-common mediainfo archivemount 
+
+# Programok
+apt install -y imagemagick imv libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi micro
+
+# Fordításokhoz szükséges
+apt install -y libxft-dev build-essential fonts-fantasque-sans cmake
+
+# Egyéb
+apt install -y zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git rsync 
+
+# GTK programok ezzel a csomaggal lassan indulnak el
+apt remove -y xdg-desktop-portal-gtk
