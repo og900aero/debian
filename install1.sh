@@ -21,7 +21,7 @@ sed -i 's/errors=remount-ro/defaults,relatime/g' /mnt/etc/fstab
 echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Swap file létrehozása, beállítása
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+dd if=/dev/zero of=/swapfile bs=1M count=2048
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
