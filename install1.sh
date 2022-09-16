@@ -18,9 +18,14 @@ chown shyciii:users /home/Data
 
 # Fstab módosítások
 sed -i 's/errors=remount-ro/defaults,relatime/g' /mnt/etc/fstab
-echo "/dev/sda3 /home/Data ext4 defaults,relatime 0 2" >> /etc/fstab
+echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
-# Swap file létrehozása
+# Swap file létrehozása, beállítása
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
 # Intel driver beállítása
