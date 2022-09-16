@@ -28,4 +28,7 @@ apt install -y libxft-dev build-essential fonts-fantasque-sans cmake
 apt install -y zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git rsync 
 
 # GTK programok ezzel a csomaggal lassan indulnak el
-apt remove -y xdg-desktop-portal-gtk
+apt autoremove -y xdg-desktop-portal-gtk
+
+#Szükségtelen programok eltávolítása
+apt autoremove –-purge -y nano
