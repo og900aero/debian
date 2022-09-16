@@ -22,7 +22,7 @@ apt install -y vifm trash-cli fuse-zip curlftpfs sshfs go-mtpfs libmtp-common me
 apt install -y imagemagick imv libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi micro
 
 # Fordításokhoz szükséges
-apt install -y libxft-dev build-essential fonts-fantasque-sans cmake
+apt install -y libxft-dev build-essential cmake
 
 # Egyéb
 apt install -y zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git rsync 
