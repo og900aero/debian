@@ -40,10 +40,6 @@ Section "Device"
 EndSection
 EOF
 
-# USB Driveok automountja
-cd /home/Data/Linux/Compile/automount-usb
-sh configure.sh
-
 # Naplózás beállítása
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf"
 
@@ -92,8 +88,12 @@ sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ign
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 # Suckless Terminal telepítése
-cd /home/Data/Linux/Compile/st-0.8.5-debian
+cd /home/Data/Linux/Compile/st-0.8.5
 make clean install
+
+# USB Driveok automountja
+cd /home/Data/Linux/Compile/automount-usb
+sh configure.sh
 
 # Saját config fileok visszaállítása
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
