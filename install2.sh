@@ -10,7 +10,7 @@ apt install -y network-manager network-manager-openvpn network-manager-gnome
 apt install -y pulseaudio pavucontrol pulseaudio-module-bluetooth blueman
 
 # Ablakezelő szoftver és kiegészítései
-apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
+apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst
 
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
