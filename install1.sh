@@ -87,6 +87,9 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
+# Alvás letiltása
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.5
 make clean install
