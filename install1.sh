@@ -93,6 +93,7 @@ systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.5
 make clean install
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
