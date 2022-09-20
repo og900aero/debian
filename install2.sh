@@ -15,7 +15,7 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
-# Filekezelő program és kiegészítései
+# Filekezelőprogram és kiegészítései
 apt install -y vifm trash-cli fuse-zip curlftpfs sshfs go-mtpfs libmtp-common mediainfo archivemount 
 
 # Programok
@@ -28,7 +28,10 @@ apt install -y libxft-dev build-essential cmake
 apt install -y firmware-misc-nonfree zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git rsync 
 
 # GTK programok ezzel a csomaggal lassan indulnak el
-apt autoremove -y xdg-desktop-portal-gtk
+apt purge -y xdg-desktop-portal-gtk
 
-#Szükségtelen programok eltávolítása
-apt autoremove –-purge -y nano vim xterm
+# Szükségtelen programok eltávolítása
+apt purge -y nano vim xterm
+
+# A már nemhasználatos csomagok eltávolítása
+apt autoremove -y
