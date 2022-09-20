@@ -99,6 +99,23 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 cd /home/Data/Linux/Compile/automount-usb
 sh configure.sh
 
+# Névfeloldás gyorsítása
+cat <<EOF > /etc/NetworkManager/NetworkManager.conf
+[main]
+plugins=ifupdown,keyfile
+dns=none
+systemd-resolved=false
+
+[ifupdown]
+managed=false
+EOF
+cat <<EOF > /etc/resolv.conf
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+chattr +i /etc/resolv.conf
+
 # Saját config fileok visszaállítása
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
