@@ -102,6 +102,9 @@ curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bas
 cd /home/Data/Linux/Compile/automount-usb
 sh configure.sh
 
+# MTP mount engedélyezése sima usernek
+sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
+
 # Névfeloldás gyorsítása
 cat <<EOF > /etc/NetworkManager/NetworkManager.conf
 [main]
