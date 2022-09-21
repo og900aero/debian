@@ -25,7 +25,7 @@ apt install -y imagemagick imv libreoffice-gtk3 libreoffice-l10n-hu transmission
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y firmware-misc-nonfree zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git rsync 
+apt install -y firmware-misc-nonfree zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight ffmpeg git curl rsync bc
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
