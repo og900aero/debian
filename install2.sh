@@ -16,7 +16,7 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-b
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y vifm trash-cli fuse-zip curlftpfs sshfs go-mtpfs libmtp-common mediainfo archivemount 
+apt install -y vifm trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount 
 
 # Programok
 apt install -y imagemagick imv libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi micro
