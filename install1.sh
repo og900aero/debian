@@ -95,7 +95,7 @@ cd /home/Data/Linux/Compile/st-0.8.5
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
-#BSLayout telepítése
+# BSLayout telepítése
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # USB Driveok automountja
