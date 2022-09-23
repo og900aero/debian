@@ -128,3 +128,7 @@ chattr +i /etc/resolv.conf
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
 chown -R shyciii:users /home/shyciii/
+
+# Nano config file beállítása a root usernek
+mkdir /root/.config/nano
+cp /home/shyciii/.config/nano/nanorc /root/.config/nano
