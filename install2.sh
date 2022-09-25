@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
-apt install -y xorg xserver-xorg-video-intel xserver-xorg-video-nouveau xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
+apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
 
 # Hálózatkezelés
 apt install -y network-manager network-manager-openvpn network-manager-gnome
 
 # Hangkeltés + bluetooth
-apt install -y pulseaudio pavucontrol pulseaudio-module-bluetooth blueman
+apt install -y pulseaudio pavucontrol pulseaudio-module-bluetooth
+# blueman
 
 # Ablakezelő szoftver és kiegészítései
 apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
