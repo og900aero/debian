@@ -7,8 +7,8 @@ apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-inpu
 apt install -y network-manager network-manager-openvpn network-manager-gnome
 
 # Hangkeltés + bluetooth
-apt install -y pulseaudio pavucontrol pulseaudio-module-bluetooth
-# blueman
+apt install -y pulseaudio pavucontrol
+# pulseaudio-module-bluetooth blueman
 
 # Ablakezelő szoftver és kiegészítései
 apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
@@ -20,7 +20,7 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts
 apt install -y vifm trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount 
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi micro
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
@@ -32,7 +32,7 @@ apt install -y firmware-misc-nonfree zip unzip unrar zstd fzf exa neofetch psmis
 apt purge -y xdg-desktop-portal-gtk
 
 # Szükségtelen programok eltávolítása
-apt purge -y nano vim xterm
+apt purge -y vim xterm # nano
 
 # A már nemhasználatos csomagok eltávolítása
 apt autoremove -y
