@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update; apt install sudo
+apt update; apt upgrade; apt install sudo
 usermod -aG sudo shyciii
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
