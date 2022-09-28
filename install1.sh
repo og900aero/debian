@@ -87,6 +87,24 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=suspend/' /etc/systemd/logind
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
+# Fedél lehajtásakor lockolja a kijelzőt
+cat > /etc/systemd/system/suspend@.service <<EOF
+[Unit]
+ 2 Description=User suspend action
+ 3 Before=sleep.target
+ 4
+ 5 [Service]
+ 6 User=%I
+ 7 Type=forking
+ 8 Environment=DISPLAY=:0
+ 9 ExecStart=/usr/bin/i3lock -i /home/shyciii/Pictures/Meghan.png
+10 ExecStartPost=/usr/bin/sleep 1
+11
+12 [Install]
+13 WantedBy=suspend.target
+EOF
+systemctl enable suspend@shyciii.service
+
 # Alvás letiltása
 # systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
