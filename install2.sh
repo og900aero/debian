@@ -32,7 +32,7 @@ apt install -y laptop-mode-tools firmware-misc-nonfree zip unzip unrar zstd fzf 
 apt purge -y xdg-desktop-portal-gtk
 
 # Szükségtelen programok eltávolítása
-apt purge -y vim xterm # nano
+apt autoremove --purge -y vim xterm nano exim4-base
 
 # A már nemhasználatos csomagok eltávolítása
 apt autoremove -y
