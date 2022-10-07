@@ -117,8 +117,8 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # USB Driveok automountja
-cd /home/Data/Linux/Compile/automount-usb
-sh configure.sh
+#cd /home/Data/Linux/Compile/automount-usb
+#sh configure.sh
 
 # MTP mount engedélyezése sima usernek, jogosultság
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
