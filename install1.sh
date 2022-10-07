@@ -142,6 +142,34 @@ nameserver 8.8.4.4
 EOF
 chattr +i /etc/resolv.conf
 
+# Tűzfal konfigurálása
+cat <<EOF > /etc/nftables.conf
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+	chain input {
+	                 type filter hook input priority 0; policy drop;
+	
+	                 # accept any localhost traffic
+	                 iif lo accept
+	
+	                 # accept traffic originated from us
+	                 ct state established,related accept
+	
+	                 # accept neighbour discovery otherwise IPv6 connectivity breaks
+	                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
+	
+	}
+	chain forward {
+		type filter hook forward priority 0; policy drop;
+	}
+}
+EOF
+systemctl enable nftables.service
+systemctl start nftables.service
+
 # Saját config fileok visszaállítása
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
