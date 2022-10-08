@@ -20,13 +20,13 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts
 apt install -y vifm trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount 
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv grsync htop google-chrome-stable inxi
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y laptop-mode-tools firmware-misc-nonfree zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g udiskie gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf ffmpeg git curl rsync bc
+apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g udiskie gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
