@@ -17,7 +17,7 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-b
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y vifm trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount
+apt install -y vifm trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg
@@ -26,7 +26,7 @@ apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk 
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac zip unzip unrar zstd fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc
+apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
