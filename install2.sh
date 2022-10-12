@@ -33,6 +33,3 @@ apt purge -y xdg-desktop-portal-gtk
 
 # Szükségtelen programok eltávolítása
 apt autoremove --purge -y vim xterm nano exim4-base
-
-# A már nemhasználatos csomagok eltávolítása
-# apt autoremove -y
