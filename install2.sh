@@ -32,4 +32,4 @@ apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac fzf
 apt purge -y xdg-desktop-portal-gtk
 
 # Szükségtelen programok eltávolítása
-apt autoremove --purge -y vim xterm nano exim4-base
+apt autoremove --purge -y vim xterm nano exim4-base youtube-dl vim-common firebird3.0-common bluez
