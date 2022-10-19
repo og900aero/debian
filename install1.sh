@@ -11,7 +11,7 @@ EOF
 wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google.gpg
 apt update
 
-# Adat partícióm felmountlása, jogosultság beállítások
+# Adat partícióm felmountlása, jogosultság beállítások, Trash
 mkdir -p /home/Data
 chmod 744 /home/Data
 chown shyciii:users /home/Data
@@ -176,5 +176,10 @@ tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/sh
 chown -R shyciii:users /home/shyciii/
 
 # Nano config file beállítása a root usernek
-mkdir /root/.config/nano
-cp /home/shyciii/.config/nano/nanorc /root/.config/nano
+#mkdir /root/.config/nano
+#cp /home/shyciii/.config/nano/nanorc /root/.config/nano
+
+# Trash mappa beállítása
+mkdir /home/Data/.Trash
+sudo chmod a+rw /home/Data/.Trash
+sudo chmod +t /home/Data/.Trash
