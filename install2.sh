@@ -17,7 +17,7 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-b
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y vifm ranger trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils python3-tk python3-pip
+apt install -y vifm ranger trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg
@@ -34,4 +34,3 @@ apt purge -y xdg-desktop-portal-gtk
 # Szükségtelen programok eltávolítása
 apt autoremove --purge -y vim xterm nano exim4-base youtube-dl vim-common firebird3.0-common bluez acpid
 
-sudo pip3 install ueberzug
