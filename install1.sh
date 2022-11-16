@@ -116,6 +116,12 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 # BSLayout telepítése
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
+# Preview for lf
+apt install libmagic-dev
+git clone https://github.com/NikitaIvanovV/ctpv
+cd ctpv
+make install
+
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
