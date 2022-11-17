@@ -117,7 +117,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # Preview for lf
-apt install libmagic-dev libssl-dev
+apt install libmagic-dev libssl-dev bat
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
@@ -191,5 +191,5 @@ chown -R shyciii:users /home/shyciii/
 
 # Trash mappa beállítása
 mkdir /home/Data/.Trash
-sudo chmod a+rw /home/Data/.Trash
-sudo chmod +t /home/Data/.Trash
+chmod a+rw /home/Data/.Trash
+chmod +t /home/Data/.Trash
