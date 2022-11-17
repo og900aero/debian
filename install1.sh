@@ -117,7 +117,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # Preview for lf
-apt install libmagic-dev
+apt install libmagic-dev libssl-dev
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
