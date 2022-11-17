@@ -121,6 +121,8 @@ apt install libmagic-dev libssl-dev bat
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
+cd ..
+rm -rf ctpv
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
