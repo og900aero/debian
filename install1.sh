@@ -195,3 +195,9 @@ chown -R shyciii:users /home/shyciii/
 mkdir /home/Data/.Trash
 chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
+
+# Xanmod kernel 5.15 telepítése
+echo 'deb http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-kernel.list
+wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
+#apt install linux-xanmod
+apt install linux-xanmod-lts
