@@ -146,9 +146,9 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 #lf telepítése
-apt install golang
+apt install -y golang
 env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
-apt autoremove --purge golang
+apt autoremove --purge -y golang
 
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
@@ -165,6 +165,7 @@ bash configure.sh
 # Ueberzug telepítése
 apt install -y python3-tk python3-pip
 apt install -y libjpeg-dev zlib1g-dev python3-dev libxext-dev
+apt install -y libx11-dev libxtst-dev python3-docopt python3-xlib python3-pil python3-attr
 pip3 install ueberzug
 
 # MTP mount engedélyezése sima usernek, jogosultság
