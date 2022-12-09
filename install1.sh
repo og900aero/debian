@@ -239,3 +239,5 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 chattr +i /etc/resolv.conf
+
+nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
