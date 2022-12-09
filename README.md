@@ -10,7 +10,7 @@ wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp3s0
 
 dhclient wlp3s0
 
-apt install git
+apt install -y git
 
 git clone https://github.com/og900aero/debian
 
