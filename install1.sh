@@ -1,7 +1,28 @@
 #!/bin/bash
 
-apt update; apt upgrade; apt install -y sudo curl make
+apt update; apt upgrade; apt install -y sudo curl
 usermod -aG sudo shyciii
+
+# Hangkeltés + bluetooth
+apt install -y pulseaudio pavucontrol
+
+# Ablakezelő szoftver és kiegészítései
+apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
+
+# Fontok
+apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
+
+# Filekezelőprogram és kiegészítései
+apt install -y gcp trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
+
+# Programok
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg
+
+# Fordításokhoz szükséges
+apt install -y libxft-dev build-essential cmake
+
+# Egyéb
+apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
 apt install gpg -y
@@ -29,7 +50,10 @@ swapon /swapfile
 echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
-mkdir -p /etc/X11/xorg.conf.d
+# Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
+apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
+
+#mkdir -p /etc/X11/xorg.conf.d
 
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
@@ -112,6 +136,7 @@ EOF
 systemctl enable suspend@shyciii.service
 
 # Suckless Terminal telepítése
+#apt install -y make pkg-config fontconfig
 cd /home/Data/Linux/Compile/st-0.8.5
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
@@ -136,30 +161,9 @@ apt install -y python3-tk python3-pip
 pip3 install ueberzug
 
 # MTP mount engedélyezése sima usernek, jogosultság
-apt install -y fuse-zip
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 mkdir -p /media/shyciii
 chmod 757 /media/shyciii
-
-# Hálózatkezelés
-apt install -y network-manager network-manager-openvpn network-manager-gnome
-
-# Névfeloldás gyorsítása
-cat <<EOF > /etc/NetworkManager/NetworkManager.conf
-[main]
-plugins=ifupdown,keyfile
-dns=none
-systemd-resolved=false
-
-[ifupdown]
-managed=false
-EOF
-cat <<EOF > /etc/resolv.conf
-nameserver 1.1.1.1
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-EOF
-chattr +i /etc/resolv.conf
 
 # Tűzfal konfigurálása
 cat <<EOF > /etc/nftables.conf
@@ -209,3 +213,29 @@ wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trust
 #apt install linux-xanmod
 apt update
 apt install -y linux-xanmod-lts
+
+# GTK programok ezzel a csomaggal lassan indulnak el
+apt purge -y xdg-desktop-portal-gtk
+
+# Szükségtelen programok eltávolítása
+apt autoremove --purge -y vim nano exim4-base youtube-dl vim-common firebird3.0-common bluez acpid
+
+# Hálózatkezelés
+apt install -y network-manager network-manager-openvpn network-manager-gnome
+
+# Névfeloldás gyorsítása
+cat <<EOF > /etc/NetworkManager/NetworkManager.conf
+[main]
+plugins=ifupdown,keyfile
+dns=none
+systemd-resolved=false
+
+[ifupdown]
+managed=false
+EOF
+cat <<EOF > /etc/resolv.conf
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+chattr +i /etc/resolv.conf
