@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update; apt upgrade; apt install sudo
+apt update; apt upgrade; apt install sudo curl
 usermod -aG sudo shyciii
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
@@ -27,6 +27,8 @@ mkswap /swapfile
 swapon /swapfile
 echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
+
+mkdir -p /etc/X11/xorg.conf.d
 
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
