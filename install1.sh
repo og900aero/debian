@@ -117,7 +117,7 @@ make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # BSLayout telepítése
-curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
+#curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # Preview for lf
 apt install libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
@@ -136,9 +136,13 @@ apt install -y python3-tk python3-pip
 pip3 install ueberzug
 
 # MTP mount engedélyezése sima usernek, jogosultság
+apt install -y fuse-zip
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 mkdir -p /media/shyciii
 chmod 757 /media/shyciii
+
+# Hálózatkezelés
+apt install -y network-manager network-manager-openvpn network-manager-gnome
 
 # Névfeloldás gyorsítása
 cat <<EOF > /etc/NetworkManager/NetworkManager.conf
@@ -203,4 +207,5 @@ chmod +t /home/Data/.Trash
 echo 'deb http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-kernel.list
 wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
 #apt install linux-xanmod
+apt update
 apt install -y linux-xanmod-lts
