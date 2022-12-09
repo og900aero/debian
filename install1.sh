@@ -46,8 +46,8 @@ EOF
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf"
 
 # Notebook-hoz doube tap beállítása
-cat > /etc/X11/xorg.conf.d/40-libinput.conf <<EOF
-Section "InputClass"
+cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
+	Section "InputClass"
         Identifier "libinput pointer catchall"
         MatchIsPointer "on"
         MatchDevicePath "/dev/input/event*"
@@ -90,7 +90,7 @@ sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ign
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 # Fedél lehajtásakor lockolja a kijelzőt
-cat > /etc/systemd/system/suspend@.service <<EOF
+cat <<EOF > /etc/systemd/system/suspend@.service
 [Unit]
  2 Description=User suspend action
  3 Before=sleep.target
