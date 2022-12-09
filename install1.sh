@@ -163,6 +163,7 @@ bash configure.sh
 
 # Ueberzug telepítése
 apt install -y python3-tk python3-pip
+apt install -y libjpeg-dev zlib1g-dev python3-dev libxext-dev
 pip3 install ueberzug
 
 # MTP mount engedélyezése sima usernek, jogosultság
