@@ -16,7 +16,7 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts
 apt install -y gcp trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop google-chrome-stable inxi ffmpeg micro
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
