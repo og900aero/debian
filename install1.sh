@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update; apt upgrade; apt install sudo curl
+apt update; apt upgrade; apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
@@ -15,6 +15,7 @@ apt update
 mkdir -p /home/Data
 chmod 744 /home/Data
 chown shyciii:users /home/Data
+mount /dev/sda3 /home/Data
 
 # Fstab módosítások
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
@@ -131,7 +132,7 @@ cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
 
 # Ueberzug telepítése
-apt install python3-tk python3-pip
+apt install -y python3-tk python3-pip
 pip3 install ueberzug
 
 # MTP mount engedélyezése sima usernek, jogosultság
@@ -202,4 +203,4 @@ chmod +t /home/Data/.Trash
 echo 'deb http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-kernel.list
 wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
 #apt install linux-xanmod
-apt install linux-xanmod-lts
+apt install -y linux-xanmod-lts
