@@ -145,7 +145,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # Preview for lf
-apt install libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
+apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
