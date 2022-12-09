@@ -4,7 +4,7 @@
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
 
 # Hálózatkezelés
-apt install -y network-manager network-manager-openvpn network-manager-gnome
+# apt install -y network-manager network-manager-openvpn network-manager-gnome
 
 # Hangkeltés + bluetooth
 apt install -y pulseaudio pavucontrol
