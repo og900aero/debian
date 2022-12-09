@@ -83,9 +83,12 @@ EOF
 sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
 
 # Notebook fedeléhez kapcsolódó események beállítása
-sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=suspend/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
+
+# Alvás letiltása
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Fedél lehajtásakor lockolja a kijelzőt
 cat <<EOF > /etc/systemd/system/suspend@.service
@@ -104,9 +107,6 @@ cat <<EOF > /etc/systemd/system/suspend@.service
 13 WantedBy=suspend.target
 EOF
 systemctl enable suspend@shyciii.service
-
-# Alvás letiltása
-# systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.5
