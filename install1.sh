@@ -28,8 +28,6 @@ swapon /swapfile
 echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
-mkdir -p /etc/X11/xorg.conf.d
-
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
@@ -43,7 +41,7 @@ EndSection
 EOF
 
 # Naplózás beállítása
-echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf"
+echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
 
 # Notebook-hoz doube tap beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
