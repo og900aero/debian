@@ -144,6 +144,11 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
+#lf telepítése
+apt install golang
+env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
+apt autoremove --purge golang
+
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
 git clone https://github.com/NikitaIvanovV/ctpv
