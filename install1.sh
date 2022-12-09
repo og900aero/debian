@@ -47,7 +47,7 @@ echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf"
 
 # Notebook-hoz doube tap beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
-	Section "InputClass"
+Section "InputClass"
         Identifier "libinput pointer catchall"
         MatchIsPointer "on"
         MatchDevicePath "/dev/input/event*"
