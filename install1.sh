@@ -17,7 +17,7 @@ chmod 744 /home/Data
 chown shyciii:users /home/Data
 
 # Fstab módosítások
-sed -i 's/errors=remount-ro/defaults,relatime/g' /mnt/etc/fstab
+sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
 echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Swap file létrehozása, beállítása
@@ -179,11 +179,11 @@ table inet filter {
 	}
 }
 EOF
-systemctl enable nftables.service
-systemctl start nftables.service
+#systemctl enable nftables.service
+#systemctl start nftables.service
 
 # Saját config fileok visszaállítása
-mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
+#mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
 chown -R shyciii:users /home/shyciii/
 
