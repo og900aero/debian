@@ -25,12 +25,13 @@ apt install -y libxft-dev build-essential cmake
 apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
-apt install gpg -y
+apt install -y gpg
 cat << EOF > /etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google.gpg
 apt update
+apt install -y google-chrome-stable
 
 # Adat partícióm felmountlása, jogosultság beállítások, Trash
 mkdir -p /home/Data
