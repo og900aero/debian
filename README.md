@@ -18,8 +18,6 @@ cd debian
 
 chmod +x install*.sh
 
-./install1.sh
-
-./install2.sh
+./install.sh
 
 rm -rf /etc/wpa_supplicant.conf
