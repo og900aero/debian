@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update; apt upgrade; apt install -y sudo curl
+apt update; apt upgrade; apt install -y sudo
 usermod -aG sudo shyciii
 
 # Hangkeltés + bluetooth
