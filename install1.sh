@@ -54,8 +54,6 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
 
-#mkdir -p /etc/X11/xorg.conf.d
-
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
@@ -162,12 +160,6 @@ rm -rf ctpv
 cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
 
-# Ueberzug telepítése
-apt install -y python3-tk python3-pip
-apt install -y libjpeg-dev zlib1g-dev python3-dev libxext-dev
-apt install -y libx11-dev libxtst-dev python3-docopt python3-xlib python3-pil python3-attr
-pip3 install ueberzug
-
 # MTP mount engedélyezése sima usernek, jogosultság
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 mkdir -p /media/shyciii
@@ -218,7 +210,6 @@ chmod +t /home/Data/.Trash
 # Xanmod kernel 5.15 telepítése
 echo 'deb http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-kernel.list
 wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
-#apt install linux-xanmod
 apt update
 apt install -y linux-xanmod-lts
 
