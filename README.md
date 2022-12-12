@@ -16,7 +16,7 @@ git clone https://github.com/og900aero/debian
 
 cd debian
 
-chmod +x install*.sh
+chmod +x install.sh
 
 ./install.sh
 
