@@ -243,7 +243,7 @@ nameserver 8.8.4.4
 EOF
 chattr +i /etc/resolv.conf
 
-# sudo-hoz EDITOR environment
-echo 'Defaults        env_keep += "EDITOR"' >> /etc/sudoers
+# sudo-hoz EDITOR environment megadása
+sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
