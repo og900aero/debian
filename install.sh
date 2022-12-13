@@ -16,13 +16,17 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts
 apt install -y gcp trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
 apt install -y laptop-mode-tools firmware-misc-nonfree cuetools shntool flac fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
+
+# Micro szövegszerkesztő legfrisebb
+cd /usr/bin
+curl https://getmic.ro/r | sudo sh
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
 apt install -y gpg
