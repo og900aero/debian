@@ -48,7 +48,7 @@ sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
 echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Swap file létrehozása, beállítása
-dd if=/dev/zero of=/swapfile bs=1M count=2048
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
@@ -242,5 +242,8 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 chattr +i /etc/resolv.conf
+
+# sudo-hoz EDITOR environment
+echo 'Defaults        env_keep += "EDITOR"' >> /etc/sudoers
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
