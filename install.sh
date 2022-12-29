@@ -13,7 +13,7 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-b
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y gcp trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
+apt install -y trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg
@@ -146,6 +146,12 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
+
+# Advanced cp és mv telepítése
+curl https://raw.githubusercontent.com/jarun/advcpmv/master/install.sh --create-dirs -o ./advcpmv/install.sh && (cd advcpmv && sh install.sh)
+mv ./advcpmv/advcp /usr/local/bin/
+mv ./advcpmv/advmv /usr/local/bin/
+rm -rf advcpmv
 
 #lf telepítése
 apt install -y golang
