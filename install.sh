@@ -37,7 +37,7 @@ wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /et
 apt update
 apt install -y google-chrome-stable
 
-# Adat partícióm felmountlása, jogosultság beállítások, Trash
+# Adat partícióm felmountlása, jogosultság beállítások
 mkdir -p /home/Data
 chmod 744 /home/Data
 chown shyciii:users /home/Data
