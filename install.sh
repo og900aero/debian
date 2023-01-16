@@ -249,6 +249,12 @@ nameserver 8.8.4.4
 EOF
 chattr +i /etc/resolv.conf
 
+# Default programok root alatt
+cat <<EOF > /root/.bashrc
+export VISUAL=micro
+export EDITOR=micro
+EOF
+
 # sudo-hoz EDITOR environment megadása
 sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
