@@ -263,7 +263,7 @@ echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot" >> /etc/sudoers
 
 # Performance support engedélyezése
 crontab -l > mycron
-echo "dev.i915.perf_stream_paranoid=0" >> mycron
+echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
 crontab mycron
 rm mycron
 
