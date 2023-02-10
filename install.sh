@@ -262,6 +262,6 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot" >> /etc/sudoers
 
 # Performance support engedélyezése
-echo "dev.i915.perf_stream_paranoid=0" > /etc/sysctl.conf
+echo "dev.i915.perf_stream_paranoid=0" >> /etc/sysctl.d/local.conf
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
