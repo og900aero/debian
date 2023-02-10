@@ -261,4 +261,7 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 # Adott user jelszó nélküli restart, shutdown lehetősége
 echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot" >> /etc/sudoers
 
+# Performance support engedélyezése
+echo "options i915 enable_guc=2" > /etc/modprobe.d/i915.conf
+
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
