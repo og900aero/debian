@@ -267,4 +267,7 @@ echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
 crontab mycron
 rm mycron
 
+# Install please-cli
+pip3 install please-cli
+
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
