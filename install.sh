@@ -271,7 +271,7 @@ rm mycron
 pip3 install please-cli
 
 # Printing (http://localhost:631/admin/)
-apt install -y cups printer-driver-escpr
-usermod -aG lpadmin shyciii
+apt install -y system-config-printer printer-driver-escpr
+usermod -aG lp shyciii
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
