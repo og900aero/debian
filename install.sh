@@ -24,7 +24,7 @@ apt install -y libxft-dev build-essential cmake
 
 # Egyéb
 apt install -y laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
-# adb boot
+# adb fastboot
 
 # Micro szövegszerkesztő legfrisebb
 cd /usr/bin
