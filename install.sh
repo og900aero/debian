@@ -13,7 +13,8 @@ apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-b
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli fuse-zip curlftpfs sshfs android-file-transfer mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
+apt install -y trash-cli fuse-zip curlftpfs sshfs mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
+# android-file-transfer
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg
@@ -22,7 +23,8 @@ apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk 
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion adb fastboot dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
+apt install -y laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
+# adb boot
 
 # Micro szövegszerkesztő legfrisebb
 cd /usr/bin
