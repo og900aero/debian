@@ -26,6 +26,9 @@ apt install -y libxft-dev build-essential cmake
 apt install -y laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
 # adb fastboot
 
+# DWM-nek
+apt install -y libx11-xcb-dev libxcb-res0-dev
+
 # Micro szövegszerkesztő legfrisebb
 cd /usr/bin
 curl https://getmic.ro/r | sudo sh
