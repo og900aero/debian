@@ -27,7 +27,7 @@ apt install -y laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool f
 # adb fastboot
 
 # DWM-nek
-apt install -y libx11-xcb-dev libxcb-res0-dev feh
+apt install -y libx11-xcb-dev libxcb-res0-dev feh nitrogen
 
 # Micro szövegszerkesztő legfrisebb
 cd /usr/bin
