@@ -10,7 +10,7 @@ apt install -y pulseaudio pavucontrol
 apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
 
 # DWM-nek
-apt install -y libx11-xcb-dev libxcb-res0-dev feh nitrogen
+apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
