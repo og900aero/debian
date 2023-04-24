@@ -273,7 +273,7 @@ crontab mycron
 rm mycron
 
 # Install please-cli
-pip3 install please-cli
+# pip3 install please-cli
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
