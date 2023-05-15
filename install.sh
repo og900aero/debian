@@ -145,18 +145,12 @@ systemctl enable suspend@shyciii.service
 
 # Suckless Terminal telepítése
 #apt install -y make pkg-config fontconfig
-cd /home/Data/Linux/Compile/st-0.8.5
+cd /home/Data/Linux/Compile/st-0.9
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
-
-# Advanced cp és mv telepítése
-curl https://raw.githubusercontent.com/jarun/advcpmv/master/install.sh --create-dirs -o ./advcpmv/install.sh && (cd advcpmv && sh install.sh)
-mv ./advcpmv/advcp /usr/local/bin/
-mv ./advcpmv/advmv /usr/local/bin/
-rm -rf advcpmv
 
 #lf telepítése
 apt install -y golang
@@ -228,6 +222,13 @@ chmod +t /home/Data/.Trash
 #apt update
 #apt install -y linux-xanmod-lts
 
+# Install joshuto
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+git clone https://github.com/kamiyaa/joshuto.git
+cd joshuto
+cargo install --git https://github.com/kamiyaa/joshuto.git --force
+
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
 
@@ -271,9 +272,6 @@ crontab -l > mycron
 echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
 crontab mycron
 rm mycron
-
-# Install please-cli
-# pip3 install please-cli
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
