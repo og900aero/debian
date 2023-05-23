@@ -16,7 +16,7 @@ apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli fuse-zip ifuse curlftpfs sshfs mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat
+apt install -y trash-cli fuse-zip ifuse curlftpfs sshfs mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger
 # android-file-transfer
 
 # Programok
