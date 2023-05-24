@@ -149,6 +149,11 @@ cd /home/Data/Linux/Compile/st-0.9
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
+# DWM telepítése
+cd /home/Data/Linux/Compile/dwm
+rm config.h
+make clean install
+
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
