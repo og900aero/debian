@@ -223,11 +223,11 @@ chmod +t /home/Data/.Trash
 #apt install -y linux-xanmod-lts
 
 # Install joshuto
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
-git clone https://github.com/kamiyaa/joshuto.git
-cd joshuto
-cargo install --git https://github.com/kamiyaa/joshuto.git --force
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#source "$HOME/.cargo/env"
+#git clone https://github.com/kamiyaa/joshuto.git
+#cd joshuto
+#cargo install --git https://github.com/kamiyaa/joshuto.git --force
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
