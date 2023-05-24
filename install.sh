@@ -234,6 +234,10 @@ chmod +t /home/Data/.Trash
 #cd joshuto
 #cargo install --git https://github.com/kamiyaa/joshuto.git --force
 
+# Printing
+apt install -y cups system-config-printer printer-driver-escpr
+usermod -aG lp,lpadmin shyciii
+
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
 
@@ -277,9 +281,5 @@ crontab -l > mycron
 echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
 crontab mycron
 rm mycron
-
-# Printing
-apt install -y cups system-config-printer printer-driver-escpr
-usermod -aG lp,lpadmin shyciii
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
