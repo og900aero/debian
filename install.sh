@@ -157,10 +157,10 @@ make clean install
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
-#lf telepítése
-apt install -y golang
-env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
-apt autoremove --purge -y golang
+# lf telepítése
+#apt install -y golang
+#env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
+#apt autoremove --purge -y golang
 
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
