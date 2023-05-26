@@ -52,6 +52,10 @@ mount /dev/sda3 /home/Data
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
 echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
+# Grub timeout módosítása
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/g' /etc/default/grub
+update-grub
+
 # Swap file létrehozása, beállítása
 dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 chmod 600 /swapfile
