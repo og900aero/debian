@@ -242,6 +242,28 @@ chmod +t /home/Data/.Trash
 apt install -y cups system-config-printer printer-driver-escpr
 usermod -aG lp,lpadmin shyciii
 
+# SMB telepítése
+apt install -y samba
+cat <<EOF > /etc/samba/smb.conf
+[global]
+
+   workgroup = WORKGROUP
+   log file = /var/log/samba/log.%m
+   max log size = 1000
+   logging = file
+
+[Downloads]
+
+   comment = iphone share
+   path = /home/shyciii/Downloads
+   guest ok = no
+   browseable = yes
+   create mask = 0644
+   directory mask = 0744
+EOF
+smbpasswd -a shyciii
+systemctl restart smbd.service
+
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
 
