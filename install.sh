@@ -257,6 +257,7 @@ cat <<EOF > /etc/samba/smb.conf
 
    comment = iphone share
    path = /home/shyciii/Downloads
+   writable = yes
    guest ok = no
    browseable = yes
    create mask = 0644
