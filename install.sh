@@ -17,7 +17,6 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-ubuntu fonts-roboto fonts
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli fuse-zip ifuse curlftpfs sshfs mediainfo archivemount zip unzip unrar zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger
-# android-file-transfer
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
@@ -27,7 +26,9 @@ apt install -y libxft-dev build-essential cmake
 
 # Egyéb
 apt install -y pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
-# adb fastboot
+
+# Androidhoz
+# spt install -y adb fastboot android-file-transfer
 
 # Micro szövegszerkesztő legfrisebb
 #cd /usr/bin
