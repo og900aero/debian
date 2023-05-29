@@ -55,7 +55,7 @@ echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /e
 
 # Grub timeout módosítása
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/g' /etc/default/grub
-sed -i 's/quiet//g' /etc/default/grub
+sed -i 's/quiet/loglevel=3/g' /etc/default/grub
 update-grub
 
 # Swap file létrehozása, beállítása
