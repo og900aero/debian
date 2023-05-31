@@ -25,7 +25,7 @@ apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk 
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y xdotool pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
+apt install -y ripgrep xdotool pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
 
 # Androidhoz
 # spt install -y adb fastboot android-file-transfer
