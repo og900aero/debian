@@ -177,13 +177,11 @@ make clean install
 
 # lf telepítése
 apt install -y golang
-read -p "Press enter to continue"
-env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
+env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 apt autoremove --purge -y golang
 
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
-read -p "Press enter to continue"
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
