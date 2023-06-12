@@ -287,7 +287,7 @@ apt purge -y xdg-desktop-portal-gtk
 read -p "Press enter to continue"
 
 # Szükségtelen programok eltávolítása
-apt autoremove --purge -y vim nano exim4-base youtube-dl vim-common firebird3.0-common bluez acpid
+apt autoremove --purge -y nano vim-common firebird3.0-common bluez
 read -p "Press enter to continue"
 
 # Hálózatkezelés
