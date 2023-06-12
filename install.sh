@@ -292,6 +292,7 @@ read -p "Press enter to continue"
 
 # Hálózatkezelés
 apt install -y network-manager network-manager-openvpn network-manager-gnome
+head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 read -p "Press enter to continue"
 
 # Névfeloldás gyorsítása
