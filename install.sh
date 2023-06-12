@@ -19,7 +19,7 @@ read -p "Press enter to continue"
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
-# curlftps unrar
+# curlftps
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
@@ -31,7 +31,7 @@ apt install -y libxft-dev build-essential cmake
 apt install -y ripgrep xdotool pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
 
 # Androidhoz
-# spt install -y adb fastboot android-file-transfer
+# apt install -y adb fastboot android-file-transfer
 
 # Micro szövegszerkesztő legfrisebb
 #cd /usr/bin
@@ -154,7 +154,6 @@ systemctl enable suspend@shyciii.service
 
 # Suckless Terminal telepítése
 #apt install -y make pkg-config fontconfig
-read -p "Press enter to continue"
 cd /home/Data/Linux/Compile/st-0.9
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
@@ -246,7 +245,6 @@ chmod +t /home/Data/.Trash
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
-read -p "Press enter to continue"
 usermod -aG lp,lpadmin shyciii
 
 # SMB telepítése
@@ -274,16 +272,13 @@ systemctl restart smbd.service
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
-read -p "Press enter to continue"
 
 # Szükségtelen programok eltávolítása
 apt autoremove --purge -y nano vim-common firebird3.0-common bluez
-read -p "Press enter to continue"
 
 # Hálózatkezelés
 apt install -y network-manager network-manager-openvpn network-manager-gnome
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
-read -p "Press enter to continue"
 
 # Névfeloldás gyorsítása
 cat <<EOF > /etc/NetworkManager/NetworkManager.conf
