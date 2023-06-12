@@ -5,29 +5,37 @@ usermod -aG sudo shyciii
 
 # Hangkeltés + bluetooth
 apt install -y pulseaudio pavucontrol
+read -p "Press enter to continue"
 
 # Ablakezelő szoftver és kiegészítései
 apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
+read -p "Press enter to continue"
 
 # DWM-nek
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
+read -p "Press enter to continue"
 
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
+read -p "Press enter to continue"
 # fonts-ubuntu
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
+read -p "Press enter to continue"
 # curlftps unrar
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
+read -p "Press enter to continue"
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
+read -p "Press enter to continue"
 
 # Egyéb
 apt install -y ripgrep xdotool pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
+read -p "Press enter to continue"
 
 # Androidhoz
 # spt install -y adb fastboot android-file-transfer
@@ -70,6 +78,7 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
+read -p "Press enter to continue"
 
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
@@ -153,6 +162,7 @@ systemctl enable suspend@shyciii.service
 
 # Suckless Terminal telepítése
 #apt install -y make pkg-config fontconfig
+read -p "Press enter to continue"
 cd /home/Data/Linux/Compile/st-0.9
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
@@ -166,12 +176,14 @@ make clean install
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # lf telepítése
-#apt install -y golang
-#env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
-#apt autoremove --purge -y golang
+apt install -y golang
+read -p "Press enter to continue"
+env CGO_ENABLED=0 GO111MODULE=on go get -u -ldflags="-s -w" github.com/gokcehan/lf
+apt autoremove --purge -y golang
 
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
+read -p "Press enter to continue"
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make install
@@ -244,6 +256,7 @@ chmod +t /home/Data/.Trash
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
+read -p "Press enter to continue"
 usermod -aG lp,lpadmin shyciii
 
 # SMB telepítése
@@ -271,12 +284,15 @@ systemctl restart smbd.service
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
+read -p "Press enter to continue"
 
 # Szükségtelen programok eltávolítása
 apt autoremove --purge -y vim nano exim4-base youtube-dl vim-common firebird3.0-common bluez acpid
+read -p "Press enter to continue"
 
 # Hálózatkezelés
 apt install -y network-manager network-manager-openvpn network-manager-gnome
+read -p "Press enter to continue"
 
 # Névfeloldás gyorsítása
 cat <<EOF > /etc/NetworkManager/NetworkManager.conf
@@ -308,9 +324,9 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot" >> /etc/sudoers
 
 # Performance support engedélyezése
-crontab -l > mycron
-echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
-crontab mycron
-rm mycron
+#crontab -l > mycron
+#echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
+#crontab mycron
+#rm mycron
 
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
