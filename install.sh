@@ -5,15 +5,12 @@ usermod -aG sudo shyciii
 
 # Hangkeltés + bluetooth
 apt install -y pulseaudio pavucontrol
-read -p "Press enter to continue"
 
 # Ablakezelő szoftver és kiegészítései
 apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
-read -p "Press enter to continue"
 
 # DWM-nek
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
-read -p "Press enter to continue"
 
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
@@ -21,21 +18,17 @@ read -p "Press enter to continue"
 # fonts-ubuntu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
-read -p "Press enter to continue"
+apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
 # curlftps unrar
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
-read -p "Press enter to continue"
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
-read -p "Press enter to continue"
 
 # Egyéb
 apt install -y ripgrep xdotool pmount freerdp2-x11 laptop-mode-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa neofetch psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome xbacklight heif-gdk-pixbuf git curl bc x11-apps
-read -p "Press enter to continue"
 
 # Androidhoz
 # spt install -y adb fastboot android-file-transfer
@@ -78,7 +71,6 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
-read -p "Press enter to continue"
 
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
