@@ -14,11 +14,9 @@ apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 
 # Fontok
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
-# fonts-ubuntu
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
-# curlftps
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
