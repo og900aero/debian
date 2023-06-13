@@ -18,6 +18,9 @@ apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
 
+# Ueberzug-hoz kell
+apt install -y python3-dev libjpeg-dev libxcb-composite0-dev libxcb-image0-dev
+
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
 
