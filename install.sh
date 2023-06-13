@@ -167,6 +167,8 @@ make clean install
 apt install -y golang
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 apt autoremove --purge -y golang
+cp /root/go/bin/lf /usr/local/bin
+rm -rf /root/go
 
 # Preview for lf
 apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
