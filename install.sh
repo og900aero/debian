@@ -224,6 +224,7 @@ tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/sh
 chown -R shyciii:users /home/shyciii/
 cp -r /home/shyciii/.config/lf /root/.config/
 cp -r /home/shyciii/.config/ranger /root/.config/
+cp -r /home/shyciii/.config/micro /root/.config/
 
 # Nano config file beállítása a root usernek
 #mkdir /root/.config/nano
