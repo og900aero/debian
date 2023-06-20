@@ -84,7 +84,7 @@ EOF
 # Naplózás beállítása
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
 
-# Notebook-hoz doube tap beállítása
+# Notebook-hoz double tap beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
 Section "InputClass"
         Identifier "libinput pointer catchall"
