@@ -7,7 +7,8 @@ usermod -aG sudo shyciii
 apt install -y pulseaudio pavucontrol
 
 # Ablakezelő szoftver és kiegészítései
-apt install -y bspwm sxhkd i3lock xautolock xclip rofi polybar dunst libnotify-bin
+apt install -y i3lock xautolock xclip rofi dunst libnotify-bin
+#bspwm sxhkd polybar
 
 # DWM-nek
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
