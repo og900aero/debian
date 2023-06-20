@@ -171,12 +171,12 @@ cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
 
 # Preview for lf
-apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
-git clone https://github.com/NikitaIvanovV/ctpv
-cd ctpv
-make install
-cd ..
-rm -rf ctpv
+#apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
+#git clone https://github.com/NikitaIvanovV/ctpv
+#cd ctpv
+#make install
+#cd ..
+#rm -rf ctpv
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
