@@ -17,7 +17,7 @@ apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer docx2txt xlsx2csv bat ranger jq ueberzug
+apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat ranger jq ueberzug
 
 # Ueberzug-hoz kell
 apt install -y python3-dev libjpeg-dev libxcb-composite0-dev libxcb-image0-dev
@@ -151,14 +151,6 @@ env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
 apt autoremove --purge -y golang
 cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
-
-# Preview for lf
-#apt install -y libmagic-dev libssl-dev bat ffmpegthumbnailer docx2txt xlsx2csv
-#git clone https://github.com/NikitaIvanovV/ctpv
-#cd ctpv
-#make install
-#cd ..
-#rm -rf ctpv
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
