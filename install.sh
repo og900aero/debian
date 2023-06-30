@@ -156,10 +156,8 @@ rm -rf /root/go
 cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
 
-# MTP mount engedélyezése sima usernek, jogosultság
-#sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
-#mkdir -p /media/shyciii
-#chmod 757 /media/shyciii
+# Jogosultság sima usernek a fusemount csatolásakor
+sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
 # Tűzfal konfigurálása
 cat <<EOF > /etc/nftables.conf
