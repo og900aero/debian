@@ -289,5 +289,6 @@ echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot" >> /etc/sudoers
 #crontab mycron
 #rm mycron
 
-mkdir /mnt/ssh
+mkdir /mnt/sshfs
+chowm shyciii:shyciii /mnt/sshfs
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
