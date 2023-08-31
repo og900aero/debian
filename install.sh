@@ -17,7 +17,7 @@ apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat ranger jq ueberzug
+apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat ranger jq ueberzug libimage-exiftool-perl
 
 # Ueberzug-hoz kell
 apt install -y python3-dev libjpeg-dev libxcb-composite0-dev libxcb-image0-dev
