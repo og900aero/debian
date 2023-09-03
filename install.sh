@@ -248,7 +248,7 @@ systemctl restart smbd.service
 apt purge -y xdg-desktop-portal-gtk
 
 # Szükségtelen programok eltávolítása
-apt autoremove --purge -y nano vim-common firebird3.0-common bluez
+apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-tools laptop-detect
 
 # Hálózatkezelés
 apt install -y network-manager network-manager-openvpn network-manager-gnome
