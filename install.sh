@@ -17,10 +17,13 @@ apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
-apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq ueberzug libimage-exiftool-perl
+apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
+#ueberzug
 
-# Ueberzug-hoz kell
-apt install -y python3-dev libjpeg-dev libxcb-composite0-dev libxcb-image0-dev
+# Ueberzugpp telepítése
+echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
+curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
+apt install -y ueberzugpp
 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync htop inxi ffmpeg micro
