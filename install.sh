@@ -81,6 +81,7 @@ Section "Device"
     Option "AccelMethod" "sna"
     Option "TearFree" "true"
     Option "TripleBuffer" "true"
+    Option "DRI" "3"
 EndSection
 EOF
 
