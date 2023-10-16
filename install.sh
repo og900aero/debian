@@ -281,6 +281,14 @@ export VISUAL=micro
 export EDITOR=micro
 EOF
 
+# SSH kliens erősebb biztonsági beállítása
+cat <<EOF >> /etc/ssh/ssh_config
+KexAlgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org
+HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519
+Ciphers chacha20-poly1305@openssh.com
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
+EOF
+
 # sudo-hoz EDITOR environment megadása
 sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
