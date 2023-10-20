@@ -14,7 +14,7 @@ apt install -y i3lock xautolock xclip rofi dunst libnotify-bin
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
 
 # Fontok
-apt install -y fonts-font-awesome fonts-hack-ttf fonts-roboto fonts-dejavu
+apt install -y fonts-font-awesome fonts-roboto fonts-dejavu
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
