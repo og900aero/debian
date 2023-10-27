@@ -74,13 +74,10 @@ apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-inpu
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
-    Identifier "Intel Graphics"
-    Driver "modesetting"
-    Option "Backlight" "intel_backlight"
+    Identifier "Card0"
+    Driver "intel"
+    BusID  "PCI:0:2:0"
     Option "AccelMethod" "sna"
-    Option "TearFree" "true"
-    Option "TripleBuffer" "true"
-    Option "DRI" "3"
 EndSection
 EOF
 
