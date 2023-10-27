@@ -69,7 +69,7 @@ echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
-apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings va-driver-all intel-microcode
+apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver intel-microcode
 
 # Intel driver beállítása
 cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
