@@ -10,8 +10,8 @@ apt install -y pulseaudio pavucontrol
 apt install -y i3lock xautolock xclip rofi dunst libnotify-bin
 #bspwm sxhkd polybar
 
-# DWM-nek
-apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev
+# DWM és Dwmblocks-nak
+apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
 
 # Fontok
 apt install -y fonts-font-awesome fonts-roboto fonts-dejavu
@@ -141,6 +141,10 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 cd /home/Data/Linux/Compile/dwm
 rm config.h
 make clean install
+
+# DWMBlocks telepítése
+cd /home/Data/Linux/Compile/dwmblocks-async
+make install
 
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
