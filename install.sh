@@ -133,9 +133,9 @@ systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Suckless Terminal telepítése
 #apt install -y make pkg-config fontconfig
-cd /home/Data/Linux/Compile/st-0.9
-make clean install
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
+#cd /home/Data/Linux/Compile/st-0.9
+#make clean install
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
 cd /home/Data/Linux/Compile/dwm
