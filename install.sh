@@ -25,7 +25,7 @@ curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12
 apt install -y ueberzugpp
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg micro
+apt install -y rxvt-unicode imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg micro
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
