@@ -26,6 +26,7 @@ apt install -y ueberzugpp
 
 # Programok
 apt install -y rxvt-unicode imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg micro
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/urxvt 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
