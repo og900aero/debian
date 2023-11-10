@@ -147,6 +147,11 @@ make clean install
 cd /home/Data/Linux/Compile/dwmblocks-async
 make install
 
+# Fastfetch telepítése
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.2.3/fastfetch-2.2.3-Linux.deb
+apt install -y ./fastfetch-2.2.3-Linux.deb
+rm -rf fastfetch-2.2.3-Linux.deb
+
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
