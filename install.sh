@@ -8,7 +8,7 @@ apt install -y pulseaudio pavucontrol
 
 # Ablakezelő szoftver és kiegészítései
 apt install -y i3lock xautolock xclip rofi dunst libnotify-bin
-#bspwm sxhkd polybar
+#bspwm sxhkd polybar acpi
 
 # DWM és Dwmblocks-nak
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
@@ -32,7 +32,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y acpi ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+apt install -y ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
