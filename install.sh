@@ -129,6 +129,24 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
+# Alvás után legyen képernyő zárolása
+cat <<EOF > /etc/systemd/system/suspend@.service
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=shyciii
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/bin/sh -c '/usr/bin/i3lock -i ~/Pictures/Meghan.png'
+
+[Install]
+WantedBy=sleep.target
+EOF
+systemctl enable suspend@service
+systemctl start suspend@service
+
 # Szolgáltatások letiltása
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
