@@ -129,8 +129,8 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
-# Alvás letiltása
-systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+# Szolgáltatások letiltása
+systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
 # Suckless Terminal telepítése
 #apt install -y make pkg-config fontconfig
