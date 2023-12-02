@@ -7,8 +7,7 @@ usermod -aG sudo shyciii
 apt install -y pulseaudio pavucontrol
 
 # Ablakezelő szoftver és kiegészítései
-apt install -y i3lock xautolock xclip rofi dunst libnotify-bin
-#bspwm sxhkd polybar acpi
+apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi
 
 # DWM és Dwmblocks-nak
 apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
@@ -25,8 +24,8 @@ curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12
 apt install -y ueberzugpp
 
 # Programok
-apt install -y rxvt-unicode imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg micro
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/urxvt 100
+apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg micro
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
@@ -157,13 +156,13 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
-cd /home/Data/Linux/Compile/dwm
-rm config.h
-make clean install
+#cd /home/Data/Linux/Compile/dwm
+#rm config.h
+#make clean install
 
 # DWMBlocks telepítése
-cd /home/Data/Linux/Compile/dwmblocks-async
-make install
+#cd /home/Data/Linux/Compile/dwmblocks-async
+#make install
 
 # Fastfetch telepítése
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.2.3/fastfetch-2.2.3-Linux.deb
