@@ -9,9 +9,6 @@ apt install -y pulseaudio pavucontrol
 # Ablakezelő szoftver és kiegészítései
 apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi
 
-# DWM és Dwmblocks-nak
-apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
-
 # Fontok
 apt install -y fonts-font-awesome fonts-roboto fonts-dejavu
 
@@ -156,6 +153,7 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
+#apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
 #cd /home/Data/Linux/Compile/dwm
 #rm config.h
 #make clean install
