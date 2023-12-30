@@ -209,15 +209,14 @@ table inet filter {
 	}
 }
 EOF
-#systemctl enable nftables.service
-#systemctl start nftables.service
+systemctl enable nftables.service
+systemctl start nftables.service
 
 # Saját config fileok visszaállítása
 #mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
 chown -R shyciii:users /home/shyciii/
 cp -r /home/shyciii/.config/lf /root/.config/
-cp -r /home/shyciii/.config/ranger /root/.config/
 cp -r /home/shyciii/.config/micro /root/.config/
 
 # Nano config file beállítása a root usernek
@@ -234,13 +233,6 @@ chmod +t /home/Data/.Trash
 #wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
 #apt update
 #apt install -y linux-xanmod-lts
-
-# Install joshuto
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#source "$HOME/.cargo/env"
-#git clone https://github.com/kamiyaa/joshuto.git
-#cd joshuto
-#cargo install --git https://github.com/kamiyaa/joshuto.git --force
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
