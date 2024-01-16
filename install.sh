@@ -228,7 +228,7 @@ mkdir /home/Data/.Trash
 chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
 
-# Xanmod kernel 5.15 telepítése
+# Xanmod kernel telepítése
 #echo 'deb http://deb.xanmod.org releases main' | tee /etc/apt/sources.list.d/xanmod-kernel.list
 #wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/xanmod-kernel.gpg add -
 #apt update
@@ -307,6 +307,11 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
 # Adott user jelszó nélküli restart, shutdown lehetősége
 echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
+
+# Enable BBR network congestion
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+sysctl -p
 
 # Performance support engedélyezése
 #crontab -l > mycron
