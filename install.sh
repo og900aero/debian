@@ -3,6 +3,10 @@
 apt update; apt upgrade -y; apt install -y sudo
 usermod -aG sudo shyciii
 
+# Add contrib, non-free
+apt install -y software-properties-common
+apt-add-repository -y contrib non-free non-free-firmware
+
 # Hangkeltés + bluetooth
 apt install -y pulseaudio pavucontrol
 
@@ -10,7 +14,8 @@ apt install -y pulseaudio pavucontrol
 apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi
 
 # Fontok
-apt install -y fonts-font-awesome fonts-roboto fonts-dejavu
+apt install -y fonts-font-awesome fonts-roboto fonts-dejavu ttf-mscorefonts-installer
+
 
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
