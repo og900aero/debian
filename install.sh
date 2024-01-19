@@ -313,8 +313,8 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
 
 # Enable BBR network congestion
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/local.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/local.conf
 sysctl -p
 
 # Performance support engedélyezése
