@@ -182,6 +182,11 @@ apt autoremove --purge -y golang
 cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
 
+# yazi telepítése
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+cargo install --locked --git https://github.com/sxyazi/yazi.git
+
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
@@ -272,7 +277,7 @@ apt purge -y xdg-desktop-portal-gtk
 apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-tools laptop-detect
 
 # Hálózatkezelés
-apt install -y network-manager network-manager-openvpn network-manager-gnome
+apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
 # Névfeloldás gyorsítása
