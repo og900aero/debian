@@ -248,7 +248,7 @@ apt install -y cups system-config-printer printer-driver-escpr
 usermod -aG lp,lpadmin shyciii
 
 # SMB telepítése
-apt install -y samba
+apt install -y samba cifs-utils
 cat <<EOF > /etc/samba/smb.conf
 [global]
 
