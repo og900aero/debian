@@ -172,9 +172,9 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 #make install
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.2.3/fastfetch-2.2.3-Linux.deb
-apt install -y ./fastfetch-2.2.3-Linux.deb
-rm -rf fastfetch-2.2.3-Linux.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.7/fastfetch-linux-amd64.deb
+apt install -y ./fastfetch-linux-amd64.deb
+rm -rf fastfetch-linux-amd64.deb
 
 # BSLayout telepítése
 #curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
