@@ -32,7 +32,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y parallel ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+apt install -y ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 
 # Micro text editor telepítése
 cd /usr/bin
