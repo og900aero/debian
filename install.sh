@@ -324,7 +324,10 @@ echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /
 # Enable BBR network congestion
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/local.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/local.conf
-sysctl -p
+# Other sysctl config
+net.core.rmem_max = 4194304
+net.core.wmem_max = 1048576
+sysctl --system
 
 # Performance support engedélyezése
 #crontab -l > mycron
