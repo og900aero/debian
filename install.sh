@@ -25,7 +25,7 @@ curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12
 apt install -y ueberzugpp
 
 # Programok
-apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg
+apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
