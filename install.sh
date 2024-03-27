@@ -284,6 +284,33 @@ apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-t
 apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
+# Wifi lekapcsolása, ha ethernet kábel csatlakoz8tatva van
+cat <<EOF > /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+#!/bin/bash
+export LC_ALL=C
+
+enable_disable_wifi ()
+{
+    result=$(nmcli dev | grep "ethernet" | grep -w "connected")
+    if [ -n "$result" ]; then
+        nmcli radio wifi off
+    else
+        nmcli radio wifi on
+    fi
+}
+
+if [ "$2" = "up" ]; then
+    enable_disable_wifi
+fi
+
+if [ "$2" = "down" ]; then
+    enable_disable_wifi
+fi
+EOF
+chown root:root /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+systemctl restart NetworkManager
+
 # Névfeloldás gyorsítása
 cat <<EOF > /etc/NetworkManager/NetworkManager.conf
 [main]
