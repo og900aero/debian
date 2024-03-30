@@ -362,6 +362,8 @@ sysctl --system
 #crontab mycron
 #rm mycron
 
+update-desktop-database
+
 mkdir /mnt/sshfs
 chowm shyciii:shyciii /mnt/sshfs
 nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
