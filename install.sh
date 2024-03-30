@@ -362,7 +362,7 @@ sysctl --system
 #crontab mycron
 #rm mycron
 
-update-desktop-database
+update-desktop-database ~/.local/share/applications
 
 mkdir /mnt/sshfs
 chowm shyciii:shyciii /mnt/sshfs
