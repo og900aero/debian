@@ -26,7 +26,7 @@ apt install -y ueberzugpp
 
 # Programok
 apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
@@ -156,10 +156,10 @@ systemctl start suspend@service
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
 # Suckless Terminal telepítése
-#apt install -y make pkg-config fontconfig
-#cd /home/Data/Linux/Compile/st-0.9
-#make clean install
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
+apt install -y make pkg-config fontconfig
+cd /home/Data/Linux/Compile/st-0.9.1
+make clean install
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
 #apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
