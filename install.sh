@@ -237,10 +237,13 @@ cp -r /home/shyciii/.config/micro /root/.config/
 #mkdir /root/.config/nano
 #cp /home/shyciii/.config/nano/nanorc /root/.config/nano
 
-# Trash mappa beállítása
+# Trash beállítása
 mkdir /home/Data/.Trash
 chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
+curl -L "https://github.com/umlx5h/gtrash/releases/latest/download/gtrash_$(uname -s)_$(uname -m).tar.gz" | tar xz
+chmod a+x ./gtrash
+mv ./gtrash /usr/local/bin/gtrash
 
 # Xanmod kernel telepítése
 #wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg
