@@ -171,12 +171,12 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 #make install
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.8.7/fastfetch-linux-amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.11.3/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
 # BSLayout telepítése
-#curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
+curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # lf telepítése
 apt install -y golang
@@ -186,9 +186,9 @@ cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
 
 # yazi telepítése
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
-cargo install --locked --git https://github.com/sxyazi/yazi.git
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#rustup update
+#cargo install --locked --git https://github.com/sxyazi/yazi.git
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
@@ -240,9 +240,6 @@ cp -r /home/shyciii/.config/micro /root/.config/
 mkdir /home/Data/.Trash
 chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
-curl -L "https://github.com/umlx5h/gtrash/releases/latest/download/gtrash_$(uname -s)_$(uname -m).tar.gz" | tar xz
-chmod a+x ./gtrash
-mv ./gtrash /usr/local/bin/gtrash
 
 # Xanmod kernel telepítése
 #wget -qO - https://dl.xanmod.org/archive.key | sudo gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg
