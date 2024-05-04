@@ -19,11 +19,6 @@ apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 # Filekezelőprogram és kiegészítései
 apt install -y trash-cli unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
 
-# Ueberzugpp telepítése
-echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
-curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
-apt install -y ueberzugpp
-
 # Programok
 apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
@@ -32,7 +27,7 @@ apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmi
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+apt install -y gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 
 # Micro text editor telepítése
 cd /usr/bin
@@ -43,13 +38,17 @@ cd /
 # apt install -y adb fastboot android-file-transfer
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
-apt install -y gpg
 cat << EOF > /etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google.gpg
 apt update
 apt install -y google-chrome-stable
+
+# Ueberzugpp telepítése
+echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
+curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
+apt install -y ueberzugpp
 
 # Adat partícióm felmountlása, jogosultság beállítások
 mkdir -p /home/Data
