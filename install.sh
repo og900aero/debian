@@ -34,6 +34,11 @@ cd /usr/bin
 curl https://getmic.ro | bash
 cd /
 
+# SSHRC telepítése
+wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
+chmod +x sshrc
+mv sshrc /usr/local/bin
+
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
 
