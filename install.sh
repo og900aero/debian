@@ -191,9 +191,19 @@ cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
 
 # yazi telepítése
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#rustup update
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
 #cargo install --locked --git https://github.com/sxyazi/yazi.git
+git clone https://github.com/sxyazi/yazi.git
+cd yazi/
+cargo build --release
+cp target/release/yazi /usr/local/bin/yazi
+ya pack -a yazi-rs/plugins#full-border
+ya pack -a yazi-rs/plugins#chmod
+ya pack -a yazi-rs/plugins#hide-preview
+ya pack -a yazi-rs/plugins#max-preview
+ya pack -a yazi-rs/plugins#smart-filter
+ya pack -a yazi-rs/plugins#jump-to-char
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
