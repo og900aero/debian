@@ -204,6 +204,7 @@ ya pack -a yazi-rs/plugins#hide-preview
 ya pack -a yazi-rs/plugins#max-preview
 ya pack -a yazi-rs/plugins#smart-filter
 ya pack -a yazi-rs/plugins#jump-to-char
+ya pack -a KKV9/compress
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
