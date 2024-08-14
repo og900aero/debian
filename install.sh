@@ -206,6 +206,7 @@ ya pack -a yazi-rs/plugins#smart-filter
 ya pack -a yazi-rs/plugins#jump-to-char
 ya pack -a KKV9/compress
 ya pack -a AnirudhG07/archivemount
+ya pack -a ndtoan96/ouch
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
