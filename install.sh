@@ -20,7 +20,7 @@ apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 apt install -y unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
 
 # Programok
-apt install -y alacritty imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
+apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
