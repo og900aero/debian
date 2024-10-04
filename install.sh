@@ -363,7 +363,8 @@ EOF
 sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
 # Adott user jelszó nélküli restart, shutdown lehetősége
-echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
+# echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
+echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Enable BBR network congestion
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/local.conf
