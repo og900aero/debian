@@ -260,9 +260,9 @@ chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
 
 # Delta telepítése (diff program helyett)
-wget https://github.com/dandavison/delta/releases/download/0.17.0/git-delta_0.17.0_amd64.deb
-apt install -y ./git-delta_0.17.0_amd64.deb
-rm -rf git-delta_0.17.0_amd64.deb
+wget https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
+apt install -y ./git-delta_0.18.2_amd64.deb
+rm -rf git-delta_0.18.2_amd64.deb
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
