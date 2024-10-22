@@ -22,6 +22,7 @@ apt install -y unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
@@ -33,11 +34,12 @@ apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmwar
 cd /usr/bin
 curl https://getmic.ro | bash
 cd /
+update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 10
 
 # SSHRC telepítése
-wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
-chmod +x sshrc
-mv sshrc /usr/local/bin
+#wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
+#chmod +x sshrc
+#mv sshrc /usr/local/bin
 
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
