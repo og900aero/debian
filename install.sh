@@ -384,4 +384,4 @@ update-desktop-database ~/.local/share/applications
 
 mkdir /mnt/sshfs
 chowm shyciii:shyciii /mnt/sshfs
-nmcli connection import type openvpn file /home/shyciii/.ssh/nyiroviktorlaptop2.ovpn
+nmcli connection import type openvpn file /home/shyciii/.ssh/TeleMedia.conf
