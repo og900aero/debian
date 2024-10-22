@@ -54,6 +54,7 @@ apt install -y google-chrome-stable
 # Ueberzugpp telepítése
 echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
 curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
+apt update
 apt install -y ueberzugpp
 
 # Adat partícióm felmountlása, jogosultság beállítások
