@@ -22,7 +22,6 @@ apt install -y unrar-free fuse-zip ifuse sshfs mediainfo archivemount zip unzip 
 # Programok
 apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake
@@ -31,10 +30,10 @@ apt install -y libxft-dev build-essential cmake
 apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 
 # Micro text editor telepítése
-cd /usr/bin
+cd /usr/local/bin
 curl https://getmic.ro | bash
 cd /
-update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 10
+update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
 
 # SSHRC telepítése
 #wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
@@ -163,7 +162,7 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 
 # Suckless Terminal telepítése
 apt install -y make pkg-config fontconfig
-cd /home/Data/Linux/Compile/st-0.9.1
+cd /home/Data/Linux/Compile/st-flexipatch
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
@@ -178,7 +177,7 @@ update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /
 #make install
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.11.3/fastfetch-linux-amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.27.1/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
@@ -193,22 +192,21 @@ cp /root/go/bin/lf /usr/local/bin
 rm -rf /root/go
 
 # yazi telepítése
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
-#cargo install --locked --git https://github.com/sxyazi/yazi.git
-git clone https://github.com/sxyazi/yazi.git
-cd yazi/
-cargo build --release
-cp target/release/yazi /usr/local/bin/yazi
-ya pack -a yazi-rs/plugins#full-border
-ya pack -a yazi-rs/plugins#chmod
-ya pack -a yazi-rs/plugins#hide-preview
-ya pack -a yazi-rs/plugins#max-preview
-ya pack -a yazi-rs/plugins#smart-filter
-ya pack -a yazi-rs/plugins#jump-to-char
-ya pack -a KKV9/compress
-ya pack -a AnirudhG07/archivemount
-ya pack -a TD-Sky/sudo
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#rustup update
+#git clone https://github.com/sxyazi/yazi.git
+#cd yazi/
+#cargo build --release
+#cp target/release/yazi /usr/local/bin/yazi
+#ya pack -a yazi-rs/plugins#full-border
+#ya pack -a yazi-rs/plugins#chmod
+#ya pack -a yazi-rs/plugins#hide-preview
+#ya pack -a yazi-rs/plugins#max-preview
+#ya pack -a yazi-rs/plugins#smart-filter
+#ya pack -a yazi-rs/plugins#jump-to-char
+#ya pack -a KKV9/compress
+#ya pack -a AnirudhG07/archivemount
+#ya pack -a TD-Sky/sudo
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
