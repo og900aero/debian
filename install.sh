@@ -375,6 +375,9 @@ net.core.rmem_max = 4194304
 net.core.wmem_max = 1048576
 sysctl --system
 
+# Oh-my-posh telepítése
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+
 # Performance support engedélyezése
 #crontab -l > mycron
 #echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
