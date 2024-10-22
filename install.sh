@@ -163,7 +163,7 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 
 # Suckless Terminal telepítése
 apt install -y make pkg-config fontconfig
-cd /home/Data/Linux/Compile/st-flexipatch
+cd /home/Data/Linux/Compile/st-0.9.1
 make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
