@@ -11,7 +11,7 @@ apt-add-repository -y contrib non-free non-free-firmware
 apt install -y pulseaudio pavucontrol
 
 # Ablakezelő szoftver és kiegészítései
-apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi
+apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi yad
 
 # Fontok
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
@@ -163,8 +163,8 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 
 # Suckless Terminal telepítése
 apt install -y make pkg-config fontconfig
-cd /home/Data/Linux/Compile/st-0.9.1
-make clean install
+#cd /home/Data/Linux/Compile/st-0.9.1
+#make clean install
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
@@ -250,6 +250,10 @@ tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/sh
 chown -R shyciii:users /home/shyciii/
 cp -r /home/shyciii/.config/lf /root/.config/
 cp -r /home/shyciii/.config/micro /root/.config/
+cp -r /home/shyciii/usr/local/bin/fzf /usr/local/bin
+cp -r /home/shyciii/usr/local/bin/polybar /usr/local/bin
+cp -r /home/shyciii/usr/local/bin/st /usr/local/bin
+rm -rf /home/shyciii/usr
 
 # Nano config file beállítása a root usernek
 #mkdir /root/.config/nano
