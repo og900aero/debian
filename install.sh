@@ -44,7 +44,7 @@ update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
 # apt install -y adb fastboot android-file-transfer
 
 # Chrome telepítéshez szükséges csomaglista létrehozása
-cat << EOF > /etc/apt/sources.list.d/google-chrome.list
+cat <<'EOF' > /etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google.gpg
@@ -84,7 +84,7 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver intel-microcode
 
 # Intel driver beállítása
-cat <<EOF > /etc/X11/xorg.conf.d/20-intel.conf
+cat <<'EOF' > /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
     Identifier "Intel Graphics"
     Driver "intel"
@@ -97,7 +97,7 @@ EOF
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
 
 # Notebook-hoz double tap beállítása
-cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
+cat <<'EOF' > /etc/X11/xorg.conf.d/40-libinput.conf
 Section "InputClass"
         Identifier "libinput pointer catchall"
         MatchIsPointer "on"
@@ -141,7 +141,7 @@ sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ign
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 # Alvás után legyen képernyő zárolása
-cat <<EOF > /etc/systemd/system/suspend@.service
+cat <<'EOF' > /etc/systemd/system/suspend@.service
 [Unit]
 Description=User suspend actions
 Before=sleep.target
@@ -217,7 +217,7 @@ bash configure.sh
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
 # Tűzfal konfigurálása
-cat <<EOF > /etc/nftables.conf
+cat <<'EOF' > /etc/nftables.conf
 #!/usr/sbin/nft -f
 
 flush ruleset
@@ -275,7 +275,7 @@ usermod -aG lp,lpadmin shyciii
 
 # SMB telepítése
 apt install -y samba cifs-utils
-cat <<EOF > /etc/samba/smb.conf
+cat <<'EOF' > /etc/samba/smb.conf
 [global]
 
    workgroup = WORKGROUP
@@ -309,7 +309,7 @@ apt install -y network-manager network-manager-gnome network-manager-openvpn net
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
 # Wifi lekapcsolása, ha ethernet kábel csatlakoztatva van
-cat <<EOF > /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+cat <<'EOF' > /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 #!/bin/bash
 export LC_ALL=C
 
@@ -336,7 +336,7 @@ chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 systemctl restart NetworkManager
 
 # Névfeloldás gyorsítása
-cat <<EOF > /etc/NetworkManager/NetworkManager.conf
+cat <<'EOF' > /etc/NetworkManager/NetworkManager.conf
 [main]
 plugins=ifupdown,keyfile
 dns=none
@@ -345,7 +345,7 @@ systemd-resolved=false
 [ifupdown]
 managed=false
 EOF
-cat <<EOF > /etc/resolv.conf
+cat <<'EOF' > /etc/resolv.conf
 nameserver 1.1.1.1
 nameserver 8.8.8.8
 nameserver 8.8.4.4
@@ -353,13 +353,13 @@ EOF
 chattr +i /etc/resolv.conf
 
 # Default programok root alatt
-cat <<EOF > /root/.bashrc
+cat <<'EOF' > /root/.bashrc
 export VISUAL=micro
 export EDITOR=micro
 EOF
 
 # SSH kliens erősebb biztonsági beállítása
-cat <<EOF >> /etc/ssh/ssh_config
+cat <<'EOF' >> /etc/ssh/ssh_config
 KexAlgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org
 HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519
 Ciphers chacha20-poly1305@openssh.com
