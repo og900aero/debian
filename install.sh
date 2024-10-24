@@ -292,8 +292,10 @@ cat <<EOF > /etc/samba/smb.conf
    create mask = 0644
    directory mask = 0744
 EOF
-smbpasswd -a shyciii
+#smbpasswd -a shyciii
+echo "shyciii" | sudo smbpasswd -s -a shyciii
 systemctl restart smbd.service
+echo "A folyamat végén módosítsd a shyciii smbuser jelszavát!"
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
