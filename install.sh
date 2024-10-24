@@ -392,5 +392,5 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 update-desktop-database ~/.local/share/applications
 
 mkdir /mnt/sshfs
-chowm shyciii:shyciii /mnt/sshfs
+chown shyciii:shyciii /mnt/sshfs
 nmcli connection import type openvpn file /home/shyciii/.ssh/TeleMedia.conf
