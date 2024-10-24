@@ -394,4 +394,3 @@ update-desktop-database /home/shciii/.local/share/applications
 
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
-nmcli connection import type openvpn file /home/shyciii/.ssh/TeleMedia.conf
