@@ -165,7 +165,7 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 apt install -y make pkg-config fontconfig
 #cd /home/Data/Linux/Compile/st-0.9.1
 #make clean install
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # DWM telepítése
 #apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
@@ -250,10 +250,9 @@ tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/sh
 chown -R shyciii:users /home/shyciii/
 cp -r /home/shyciii/.config/lf /root/.config/
 cp -r /home/shyciii/.config/micro /root/.config/
-cp -r /home/shyciii/usr/local/bin/fzf /usr/local/bin
-cp -r /home/shyciii/usr/local/bin/polybar /usr/local/bin
-cp -r /home/shyciii/usr/local/bin/st /usr/local/bin
+cp -r /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rf /home/shyciii/usr
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 
 # Nano config file beállítása a root usernek
 #mkdir /root/.config/nano
