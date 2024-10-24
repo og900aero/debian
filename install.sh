@@ -390,7 +390,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 #crontab mycron
 #rm mycron
 
-update-desktop-database ~/.local/share/applications
+update-desktop-database /home/shciii/.local/share/applications
 
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
