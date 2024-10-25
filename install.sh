@@ -394,6 +394,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 #rm mycron
 
 #update-desktop-database /home/shciii/.local/share/applications
+# Fényerő beállítása 75%-ra
+light -S 75
 
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
