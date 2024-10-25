@@ -385,7 +385,7 @@ sysctl --system
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Gnome-keyring automatikus kinyitása belépéskor
-sed '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
+sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
 
 # Performance support engedélyezése
 #crontab -l > mycron
@@ -393,7 +393,7 @@ sed '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional  
 #crontab mycron
 #rm mycron
 
-update-desktop-database /home/shciii/.local/share/applications
+#update-desktop-database /home/shciii/.local/share/applications
 
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
