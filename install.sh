@@ -397,5 +397,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 # Fényerő beállítása 75%-ra
 light -S 75
 
+# Hangerő beállítása 50%-ra
+pactl set-sink-volume @DEFAULT_SINK@ 50%
+
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
