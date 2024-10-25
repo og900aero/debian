@@ -384,6 +384,9 @@ sysctl --system
 # Oh-my-posh telepítése
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
+# Gnome-keyring automatikus kinyitása belépéskor
+sed '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
+
 # Performance support engedélyezése
 #crontab -l > mycron
 #echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
