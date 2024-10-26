@@ -24,7 +24,7 @@ apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk 
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
-apt install -y libxft-dev build-essential cmake
+apt install -y libxft-dev build-essential cmake make pkg-config fontconfig
 
 # Egyéb
 apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
@@ -161,12 +161,6 @@ systemctl start suspend@service
 # Szolgáltatások letiltása
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
-# Suckless Terminal telepítése
-apt install -y make pkg-config fontconfig
-#cd /home/Data/Linux/Compile/st-0.9.1
-#make clean install
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
-
 # DWM telepítése
 #apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
 #cd /home/Data/Linux/Compile/dwm
@@ -178,7 +172,7 @@ apt install -y make pkg-config fontconfig
 #make install
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.27.1/fastfetch-linux-amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.28.0/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
@@ -252,8 +246,8 @@ cp -r /home/shyciii/.config/lf /root/.config/
 cp -r /home/shyciii/.config/micro /root/.config/
 cp -r /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rf /home/shyciii/usr
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Nano config file beállítása a root usernek
 #mkdir /root/.config/nano
