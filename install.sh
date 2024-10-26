@@ -27,7 +27,7 @@ apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk 
 apt install -y libxft-dev build-essential cmake
 
 # Egyéb
-apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim fzf exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 
 # Micro text editor telepítése
 cd /usr/local/bin
@@ -186,11 +186,11 @@ rm -rf fastfetch-linux-amd64.deb
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # lf telepítése
-apt install -y golang
-env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
-apt autoremove --purge -y golang
-cp /root/go/bin/lf /usr/local/bin
-rm -rf /root/go
+#apt install -y golang
+#env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+#apt autoremove --purge -y golang
+#cp /root/go/bin/lf /usr/local/bin
+#rm -rf /root/go
 
 # yazi telepítése
 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
