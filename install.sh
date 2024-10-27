@@ -167,10 +167,6 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 #rm config.h
 #make clean install
 
-# DWMBlocks telepítése
-#cd /home/Data/Linux/Compile/dwmblocks-async
-#make install
-
 # Fastfetch telepítése
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.28.0/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
@@ -296,11 +292,11 @@ cat <<'EOF' > /etc/samba/smb.conf
 EOF
 #smbpasswd -a shyciii
 echo "shyciii" | sudo smbpasswd -s -a shyciii
-systemctl restart smbd.service
 echo "A folyamat végén módosítsd a shyciii smbuser jelszavát!"
 mkdir /home/shyciii/Downloads
 chmod 750 /home/shyciii/Downloads/
 chown shyciii:shyciii /home/shyciii/Downloads/
+systemctl restart smbd.service
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
