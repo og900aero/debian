@@ -368,11 +368,11 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Enable BBR network congestion
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/local.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/local.conf
+echo "net.core.default_qdisc = fq" >> /etc/sysctl.d/local.conf
+echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/local.conf
 # Other sysctl config
-net.core.rmem_max = 4194304
-net.core.wmem_max = 1048576
+echo "net.core.rmem_max=4194304" >> /etc/sysctl.d/local.conf
+echo "net.core.wmem_max=1048576" >> /etc/sysctl.d/local.conf
 sysctl --system
 
 # Oh-my-posh telepítése
