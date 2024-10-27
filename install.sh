@@ -273,6 +273,8 @@ cat <<'EOF' > /etc/samba/smb.conf
 [global]
 
    workgroup = WORKGROUP
+   vfs object = fruit streams_xattr
+   fruit:copyfile = yes
    log file = /var/log/samba/log.%m
    max log size = 1000
    logging = file
@@ -282,6 +284,7 @@ cat <<'EOF' > /etc/samba/smb.conf
    comment = iphone share
    path = /home/shyciii/Downloads
    writable = yes
+   valid users = shyciii
    guest ok = no
    browseable = yes
    create mask = 0644
@@ -291,6 +294,9 @@ EOF
 echo "shyciii" | sudo smbpasswd -s -a shyciii
 systemctl restart smbd.service
 echo "A folyamat végén módosítsd a shyciii smbuser jelszavát!"
+mkdir /home/shyciii/Downloads
+chmod 750 /home/shyciii/Downloads/
+chown shyciii:shyciii /home/shyciii/Downloads/
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
