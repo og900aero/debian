@@ -228,6 +228,10 @@ table inet filter {
 	
 	                 # accept neighbour discovery otherwise IPv6 connectivity breaks
 	                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
+
+                         # SMB
+			 ip saddr 192.168.0.0/24 tcp dport { 139, 445 } accept	
+			 ip saddr 192.168.0.0/24 udp dport { 137, 138 }	accept
 	
 	}
 	chain forward {
