@@ -226,8 +226,8 @@ table inet filter {
 	                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
 
                          # SMB
-			 ip saddr 192.168.0.0/24 tcp dport { 139, 445 } accept	
-			 ip saddr 192.168.0.0/24 udp dport { 137, 138 }	accept
+			 ip saddr 192.168.0.0/24 tcp dport { 139, 445 } ct state new accept	
+			 ip saddr 192.168.0.0/24 udp dport { 137, 138 }	ct state new accept
 	
 	}
 	chain forward {
@@ -275,9 +275,6 @@ cat <<'EOF' > /etc/samba/smb.conf
    workgroup = WORKGROUP
    vfs object = fruit streams_xattr
    fruit:copyfile = yes
-   log file = /var/log/samba/log.%m
-   max log size = 1000
-   logging = file
 
 [Downloads]
 
