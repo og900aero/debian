@@ -399,3 +399,6 @@ pactl set-sink-volume @DEFAULT_SINK@ 50%
 
 mkdir /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
+
+echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
+echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
