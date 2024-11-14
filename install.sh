@@ -195,6 +195,8 @@ curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bas
 #ya pack -a yazi-rs/plugins#max-preview
 #ya pack -a yazi-rs/plugins#smart-filter
 #ya pack -a yazi-rs/plugins#jump-to-char
+#ya pack -a dawsers/dual-pane
+#ya pack -a dawsers/fuse-archive
 #ya pack -a KKV9/compress
 #ya pack -a AnirudhG07/archivemount
 #ya pack -a TD-Sky/sudo
