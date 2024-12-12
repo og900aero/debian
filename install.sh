@@ -86,6 +86,16 @@ mkswap /swapfile
 swapon /swapfile
 echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
+echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
+echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
+# 4GB memória miatt (8GB memória esetén 5 legyen)
+echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
+# 4GB memória miatt (8GB memória esetén 3 legyen)
+echo "vm.dirty_background_ratio=10" >> /etc/sysctl.d/local.conf
+membycore=$(echo $(( $(vmstat -s | head -n1 | awk '{print $1;}')/$(nproc) )))
+bestkeepfree=$(echo "scale=0; "$membycore"*0.058" | bc | awk '{printf "%.0f\n", $1}');
+bestkeepfree=$(echo "$membycore * 0.058" | bc | awk '{printf "%.0f\n", $1}')
+echo "vm.min_free_kbytes=$bestkeepfree" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver intel-microcode
