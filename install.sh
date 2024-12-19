@@ -20,11 +20,14 @@ apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
 
 # Programok
-apt install -y imagemagick imv libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
+apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # Fordításokhoz szükséges
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig
+
+# feh új verziójához szükséges Debian 12-nél
+apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
 
 # Egyéb
 apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
