@@ -95,10 +95,7 @@ echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
 echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
 # 4GB memória miatt (8GB memória esetén 3 legyen)
 echo "vm.dirty_background_ratio=10" >> /etc/sysctl.d/local.conf
-membycore=$(echo $(( $(vmstat -s | head -n1 | awk '{print $1;}')/$(nproc) )))
-bestkeepfree=$(echo "scale=0; "$membycore"*0.058" | bc | awk '{printf "%.0f\n", $1}');
-bestkeepfree=$(echo "$membycore * 0.058" | bc | awk '{printf "%.0f\n", $1}')
-echo "vm.min_free_kbytes=$bestkeepfree" >> /etc/sysctl.d/local.conf
+echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver intel-microcode
@@ -181,19 +178,10 @@ systemctl start suspend@service
 # Szolgáltatások letiltása
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
-# DWM telepítése
-#apt install -y libx11-xcb-dev libxcb-res0-dev libxinerama-dev libxcb-util-dev
-#cd /home/Data/Linux/Compile/dwm
-#rm config.h
-#make clean install
-
 # Fastfetch telepítése
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.28.0/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
-
-# BSLayout telepítése
-curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 
 # lf telepítése
 #apt install -y golang
