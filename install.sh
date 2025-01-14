@@ -17,7 +17,7 @@ apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polyb
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
 # Filekezelőprogram és kiegészítései
-apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
+apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m
 
 # Programok
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
