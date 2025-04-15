@@ -54,12 +54,6 @@ wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /et
 apt update
 apt install -y google-chrome-stable
 
-# Ueberzugpp telepítése
-# echo 'deb http://download.opensuse.org/repositories/home:/justkidding/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:justkidding.list
-# curl -fsSL https://download.opensuse.org/repositories/home:justkidding/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_justkidding.gpg > /dev/null
-# apt update
-# apt install -y ueberzugpp
-
 # Adat partícióm felmountlása, jogosultság beállítások
 mkdir -p /home/Data
 chmod 744 /home/Data
@@ -172,7 +166,7 @@ systemctl start suspend@service
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.33.0/fastfetch-linux-amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.40.4/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
@@ -361,7 +355,7 @@ EOF
 cat <<'EOF' >> /etc/ssh/ssh_config
 KexAlgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org
 HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-ed25519
-Ciphers chacha20-poly1305@openssh.com
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
 EOF
 
