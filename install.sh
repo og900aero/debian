@@ -152,7 +152,8 @@ Before=sleep.target
 
 [Service]
 User=shyciii
-Type=forking
+Type=oneshot
+RemainAfterExit=yes
 Environment=DISPLAY=:0
 ExecStart=/bin/sh -c '/usr/bin/i3lock -i ~/Pictures/Meghan.png'
 
