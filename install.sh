@@ -166,7 +166,7 @@ systemctl start suspend@service
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
 # Fastfetch telepítése
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.40.4/fastfetch-linux-amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.44.0/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
@@ -393,7 +393,7 @@ light -S 75
 # Hangerő beállítása 50%-ra
 pactl set-sink-volume @DEFAULT_SINK@ 50%
 
-mkdir /mnt/sshfs
+mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
 
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
