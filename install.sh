@@ -39,9 +39,9 @@ cd /
 update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
 
 # SSHRC telepítése
-#wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
-#chmod +x sshrc
-#mv sshrc /usr/local/bin
+wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
+chmod +x sshrc
+mv sshrc /usr/local/bin
 
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
@@ -79,23 +79,23 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
 echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
 # 4GB memória miatt (8GB memória esetén 5 legyen)
-echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
+echo "vm.dirty_ratio=5" >> /etc/sysctl.d/local.conf
 # 4GB memória miatt (8GB memória esetén 3 legyen)
-echo "vm.dirty_background_ratio=10" >> /etc/sysctl.d/local.conf
+echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
 echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
 apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver intel-microcode
 
 # Intel driver beállítása
-cat <<'EOF' > /etc/X11/xorg.conf.d/20-intel.conf
-Section "Device"
-    Identifier "Intel Graphics"
-    Driver "intel"
-    Option "TearFree" "true"
-    Option "TripleBuffer" "true"
-EndSection
-EOF
+#cat <<'EOF' > /etc/X11/xorg.conf.d/20-intel.conf
+#Section "Device"
+#    Identifier "Intel Graphics"
+#    Driver "intel"
+#    Option "TearFree" "true"
+#    Option "TripleBuffer" "true"
+#EndSection
+#EOF
 
 # Naplózás beállítása
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
@@ -265,32 +265,32 @@ apt install -y cups system-config-printer printer-driver-escpr
 usermod -aG lp,lpadmin shyciii
 
 # SMB telepítése
-apt install -y samba cifs-utils
-cat <<'EOF' > /etc/samba/smb.conf
-[global]
-
-   workgroup = WORKGROUP
-   vfs object = fruit streams_xattr
-   fruit:copyfile = yes
-
-[Downloads]
-
-   comment = iphone share
-   path = /home/shyciii/Downloads
-   writable = yes
-   valid users = shyciii
-   guest ok = no
-   browseable = yes
-   create mask = 0644
-   directory mask = 0744
-EOF
+#apt install -y samba cifs-utils
+#cat <<'EOF' > /etc/samba/smb.conf
+#[global]
+#
+#   workgroup = WORKGROUP
+#   vfs object = fruit streams_xattr
+#   fruit:copyfile = yes
+#
+#[Downloads]
+#
+#   comment = iphone share
+#   path = /home/shyciii/Downloads
+#   writable = yes
+#   valid users = shyciii
+#   guest ok = no
+#   browseable = yes
+#   create mask = 0644
+#   directory mask = 0744
+#EOF
 #smbpasswd -a shyciii
-echo "shyciii" | sudo smbpasswd -s -a shyciii
-echo "A folyamat végén módosítsd a shyciii smbuser jelszavát!"
-mkdir /home/shyciii/Downloads
-chmod 750 /home/shyciii/Downloads/
-chown shyciii:shyciii /home/shyciii/Downloads/
-systemctl restart smbd.service
+#echo "shyciii" | sudo smbpasswd -s -a shyciii
+#echo "A folyamat végén módosítsd a shyciii smbuser jelszavát!"
+#mkdir /home/shyciii/Downloads
+#chmod 750 /home/shyciii/Downloads/
+#chown shyciii:shyciii /home/shyciii/Downloads/
+#systemctl restart smbd.service
 
 # GTK programok ezzel a csomaggal lassan indulnak el
 apt purge -y xdg-desktop-portal-gtk
@@ -380,12 +380,6 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Gnome-keyring automatikus kinyitása belépéskor
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
-
-# Performance support engedélyezése
-#crontab -l > mycron
-#echo "@reboot /sbin/sysctl -q -w dev.i915.perf_stream_paranoid=0" >> mycron
-#crontab mycron
-#rm mycron
 
 #update-desktop-database /home/shciii/.local/share/applications
 # Fényerő beállítása 75%-ra
