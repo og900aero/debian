@@ -85,7 +85,7 @@ echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
 echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
 
 # Videódriver + Grafikus felület + Billentyűzet + Mouse + Intel proci javításai
-apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver-non-free intel-microcode
+apt install -y xorg xserver-xorg-video-intel xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver-non-free
 
 # Intel driver beállítása
 #cat <<'EOF' > /etc/X11/xorg.conf.d/20-intel.conf
