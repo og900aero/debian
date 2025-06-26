@@ -22,4 +22,3 @@ chmod +x install.sh
 
 rm -rf /etc/wpa_supplicant.conf
 
-curl -s https://raw.githubusercontent.com/og900aero/debian/main/install.sh | bash
