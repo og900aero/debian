@@ -80,17 +80,13 @@ echo; read -rsn1 -p "Press any key to continue . . ."; echo
 # Adat partícióm felmountlása, jogosultság beállítások
 mkdir -p /home/Data
 chmod 744 /home/Data
-chown shyciii:shyciii /home/Data
-#mount /dev/sda3 /home/Data
-mount "$PARTITION"
-#mount /dev/nvme0n1p3 /home/Data
+chown shyciii:users /home/Data
+#mount "$PARTITION"
 echo; read -rsn1 -p "Press any key to continue . . ."; echo
 
 # Fstab módosítások
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
-#echo "/dev/sda3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
-#echo "/dev/nvme0n1p3      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
-echo "$PARTITION      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
+#echo "$PARTITION      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 echo; read -rsn1 -p "Press any key to continue . . ."; echo
 
 # Grub timeout módosítása
