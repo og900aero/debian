@@ -2,6 +2,7 @@
 
 ifdown wlp0s20f3
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
+systemctl restart networking
 ip link set dev wlp0s20f3 down
 ip link set dev wlp0s20f3 up
 iwlist wlp0s20f3 scan | grep ESSID
