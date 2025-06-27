@@ -28,7 +28,7 @@ apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polyb
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
 # File manager and add-ons
-apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m libimlib2-dev
+apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m
 
 # Other programs
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
@@ -42,7 +42,7 @@ apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
 
 # Others
 #apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
-apt install -y testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps
+apt install -y testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps libxcb-res0 libimlib2-dev
 
 # Install Micro text editor
 cd /usr/local/bin
