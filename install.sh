@@ -405,8 +405,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 light -S 75
 
 # Set volume to 50%
-#pactl set-sink-volume @DEFAULT_SINK@ 50%
-pactl set-sink-volume alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink 50%
+active_sink=$(pacmd list-sinks | awk '/* index:/{print $3}')
+pactl set-sink-volume "$active_sink" 50%
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
