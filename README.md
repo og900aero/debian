@@ -1,5 +1,7 @@
 # Debian
 
+ifdown wlp0s20f3
+
 ip link set dev wlp0s20f3 up
 
 iwlist wlp0s20f3 scan | grep ESSID
