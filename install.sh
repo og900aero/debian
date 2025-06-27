@@ -394,7 +394,8 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Install Oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+#curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+sudo env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
