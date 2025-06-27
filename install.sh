@@ -11,7 +11,7 @@ else
     PARTITION="/dev/${MAIN_DISK}3"
 fi
 
-apt update; apt upgrade -y; apt install -y sudo
+apt update; apt upgrade -y; apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Add contrib, non-free
@@ -395,7 +395,7 @@ echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Install Oh-my-posh
 #curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-sudo env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
+env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
