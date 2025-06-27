@@ -1,14 +1,14 @@
 # Debian
 
-ip link set dev wlp3s0 up
+ip link set dev wlp0s20f3 up
 
-iwlist wlp3s0 scan | grep ESSID
+iwlist wlp0s20f3 scan | grep ESSID
 
 wpa_passphrase ESSID PASS | sudo tee /etc/wpa_supplicant.conf
 
-wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp3s0
+wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp0s20f3
 
-dhclient wlp3s0
+dhclient wlp0s20f3
 
 apt install -y git
 
