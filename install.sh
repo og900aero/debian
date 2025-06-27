@@ -405,7 +405,7 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 light -S 75
 
 # Set volume to 50%
-active_sink=$(pacmd list-sinks | awk '/* index:/{print $3}')
+active_sink=$(pacmd list-sinks | awk '/\* index:/ {print $3}')
 pactl set-sink-volume "$active_sink" 50%
 
 mkdir -p /mnt/sshfs
