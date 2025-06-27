@@ -79,7 +79,7 @@ chown shyciii:users /home/Data
 
 # Modify fstab
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
-sed -i 's//home/Data      ext4    defaults//home/Data      ext4    defaults,relatime/g' /etc/fstab
+sed -i 's/home\/Data      ext4    defaults/home\/Data      ext4    defaults,relatime/g' /etc/fstab
 #echo "$PARTITION      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Modify grub timeout
