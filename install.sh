@@ -55,6 +55,11 @@ wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
 chmod +x sshrc
 mv sshrc /usr/local/bin
 
+# Install zoxide
+wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.8/zoxide_0.9.8-1_amd64.deb
+apt install -y ./zoxide_0.9.8-1_amd64.deb
+rm -rf zoxide_0.9.8-1_amd64.deb
+
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
 
