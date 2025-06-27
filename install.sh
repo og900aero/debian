@@ -41,7 +41,8 @@ apt install -y libxft-dev build-essential cmake make pkg-config fontconfig
 apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
 
 # Others
-apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+#apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
+apt install -y testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps
 
 # Install Micro text editor
 cd /usr/local/bin
@@ -73,6 +74,7 @@ chown shyciii:users /home/Data
 
 # Modify fstab
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
+sed -i 's//home/Data      ext4    defaults//home/Data      ext4    defaults,relatime/g' /etc/fstab
 #echo "$PARTITION      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Modify grub timeout
@@ -86,6 +88,14 @@ chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
+
+# Enable BBR network congestion
+echo "net.core.default_qdisc = fq" >> /etc/sysctl.d/local.conf
+echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/local.conf
+
+# Other sysctl config
+echo "net.core.rmem_max=4194304" >> /etc/sysctl.d/local.conf
+echo "net.core.wmem_max=1048576" >> /etc/sysctl.d/local.conf
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
 echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
@@ -169,8 +179,8 @@ ExecStart=/bin/sh -c '/usr/bin/i3lock -i ~/Pictures/Meghan.png'
 [Install]
 WantedBy=sleep.target
 EOF
-systemctl enable suspend@service
-systemctl start suspend@service
+systemctl daemon-reload
+systemctl enable --now suspend@service
 
 # Disable services
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
@@ -232,8 +242,8 @@ table inet filter {
 	                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
 
                          # SMB
-			 ip saddr 192.168.0.0/24 tcp dport { 139, 445 } ct state new accept	
-			 ip saddr 192.168.0.0/24 udp dport { 137, 138 }	ct state new accept
+			 #ip saddr 192.168.0.0/24 tcp dport { 139, 445 } ct state new accept	
+			 #ip saddr 192.168.0.0/24 udp dport { 137, 138 }	ct state new accept
 	
 	}
 	chain forward {
@@ -241,8 +251,7 @@ table inet filter {
 	}
 }
 EOF
-systemctl enable nftables.service
-systemctl start nftables.service
+systemctl enable --now nftables.service
 
 # Restore own config files
 #mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
@@ -379,14 +388,6 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 # echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
-# Enable BBR network congestion
-echo "net.core.default_qdisc = fq" >> /etc/sysctl.d/local.conf
-echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/local.conf
-
-# Other sysctl config
-echo "net.core.rmem_max=4194304" >> /etc/sysctl.d/local.conf
-echo "net.core.wmem_max=1048576" >> /etc/sysctl.d/local.conf
-
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
@@ -398,7 +399,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 light -S 75
 
 # Set volume to 50%
-pactl set-sink-volume @DEFAULT_SINK@ 50%
+#pactl set-sink-volume @DEFAULT_SINK@ 50%
+pactl set-sink-volume alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink 50%
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
