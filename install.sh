@@ -386,7 +386,7 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
 EOF
 
-sudo to add EDITOR environment
+# sudo to add EDITOR environment
 sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
 # Possibility to restart and shutdown a given user without password
@@ -412,6 +412,8 @@ mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
+
+rm -rf /etc/wpa_supplicant.conf
 
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
 echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
