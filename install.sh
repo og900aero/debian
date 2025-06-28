@@ -4,14 +4,14 @@
 exec > >(tee -a "output.log") 2>&1
 
 # Query first disk, ssd, and select third partition
-MAIN_DISK=$(lsblk -ndo NAME,TYPE | grep 'disk' | grep -vE 'loop|rom' | head -n1)
-if [[ "$MAIN_DISK" == nvme* ]]; then
-    PARTITION="/dev/${MAIN_DISK}p3"
-else
-    PARTITION="/dev/${MAIN_DISK}3"
-fi
+#MAIN_DISK=$(lsblk -ndo NAME,TYPE | grep 'disk' | grep -vE 'loop|rom' | head -n1)
+#if [[ "$MAIN_DISK" == nvme* ]]; then
+#    PARTITION="/dev/${MAIN_DISK}p3"
+#else
+#    PARTITION="/dev/${MAIN_DISK}3"
+#fi
 
-apt update; apt upgrade -y; apt install -y sudo curl
+apt update && apt upgrade -y && apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Add contrib, non-free
@@ -27,12 +27,11 @@ apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polyb
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
-# File manager and add-ons
+# File manager add-ons
 apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m
 
 # Other programs
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
 
 # For compiles
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig
@@ -43,17 +42,6 @@ apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
 # Others
 #apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
 apt install -y testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps libxcb-res0 libimlib2-dev
-
-# Install Micro text editor
-cd /usr/local/bin
-curl https://getmic.ro | bash
-cd /
-update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
-
-# Install SSHRC
-wget https://raw.githubusercontent.com/cdown/sshrc/master/sshrc
-chmod +x sshrc
-mv sshrc /usr/local/bin
 
 # Install zoxide
 wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.8/zoxide_0.9.8-1_amd64.deb
@@ -221,8 +209,8 @@ rm -rf fastfetch-linux-amd64.deb
 #ya pack -a TD-Sky/sudo
 
 # Automount for USB drives
-cd /home/Data/Linux/Compile/automount-usb
-bash configure.sh
+#cd /home/Data/Linux/Compile/automount-usb
+bash /home/Data/Linux/Compile/automount-usb/configure.sh
 
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
@@ -269,8 +257,12 @@ cp -vr /home/shyciii/.config/micro /root/.config/
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rf /home/shyciii/usr
 
+# Set default terminal emulator
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
 #update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
+
+# Set default text editor
+update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
 
 # Set nano config file for root user
 #mkdir /root/.config/nano
@@ -394,7 +386,9 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Install Oh-my-posh
-#curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+set +x
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+set -x
 #env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Open Gnome keyring automatically on login
