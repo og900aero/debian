@@ -395,7 +395,7 @@ echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 
 # Install Oh-my-posh
 #curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
+#env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
@@ -403,10 +403,6 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 #update-desktop-database /home/shciii/.local/share/applications
 # Set brightness to 75%
 light -S 75
-
-# Set volume to 50%
-env HOME=/home/shyciii USER=shyciii bash -c 'active_sink=$(pacmd list-sinks | awk '/\* index:/ {print $3}')'
-env HOME=/home/shyciii USER=shyciii bash -c 'pactl set-sink-volume "$active_sink" 50%'
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
