@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # log all commands
 exec > >(tee -a "output.log") 2>&1
 
@@ -184,9 +186,7 @@ apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
 # Install Oh-my-posh
-set +x
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-set -x
 #env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Install lf file manager
@@ -404,6 +404,8 @@ chown shyciii:shyciii /mnt/sshfs
 sysctl --system
 
 rm -rf /etc/wpa_supplicant.conf
+
+set +x
 
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
 echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
