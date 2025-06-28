@@ -36,14 +36,15 @@ apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip p
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 
 # For compiles
-apt install -y libxft-dev build-essential cmake make pkg-config fontconfig
+apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev
 
 # Feh for the new version of Debian 12
 apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
 
 # Others
 #apt install -y testdisk gpg duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools firmware-misc-nonfree wmctrl cuetools shntool flac maim exa psmisc wget traceroute man-db bash-completion dbus-x11 ntfs-3g gnome-keyring policykit-1-gnome light heif-gdk-pixbuf git curl bc x11-apps
-apt install -y testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps libxcb-res0 libimlib2-dev
+apt install -y apt-file testdisk duf tldr ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim exa psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps
+apt-file update
 
 # Install zoxide
 wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.8/zoxide_0.9.8-1_amd64.deb
@@ -215,8 +216,8 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 #ya pack -a TD-Sky/sudo
 
 # Automount for USB drives
-#cd /home/Data/Linux/Compile/automount-usb
-bash /home/Data/Linux/Compile/automount-usb/configure.sh
+cd /home/Data/Linux/Compile/automount-usb
+bash configure.sh
 
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
