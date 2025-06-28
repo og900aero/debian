@@ -36,7 +36,7 @@ apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip p
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu
 
 # For compiles
-apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev
+apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev
 
 # Feh for the new version of Debian 12
 apt install -y libjpeg-turbo-progs libturbojpeg0 yudit-common
