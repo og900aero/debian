@@ -183,6 +183,12 @@ wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.46.0/fastfet
 apt install -y ./fastfetch-linux-amd64.deb
 rm -rf fastfetch-linux-amd64.deb
 
+# Install Oh-my-posh
+set +x
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+set -x
+#env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
+
 # Install lf file manager
 #apt install -y golang
 #env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
@@ -384,12 +390,6 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 # Possibility to restart and shutdown a given user without password
 # echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
-
-# Install Oh-my-posh
-set +x
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-set -x
-#env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
 
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
