@@ -404,7 +404,7 @@ chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
 
-rm -rf /etc/wpa_supplicant.conf
+rm -rf /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop
 
 set +x
 
