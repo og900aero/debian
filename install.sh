@@ -170,7 +170,7 @@ User=shyciii
 Type=oneshot
 RemainAfterExit=yes
 Environment=DISPLAY=:0
-ExecStart=/bin/sh -c '/usr/bin/i3lock -i ~/Pictures/Meghan.png'
+ExecStart=/bin/sh -c '/usr/bin/i3lock --color=000000 -i ~/Pictures/Meghan.png'
 
 [Install]
 WantedBy=sleep.target
