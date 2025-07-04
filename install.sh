@@ -288,6 +288,7 @@ rm -rf git-delta_0.18.2_amd64.deb
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
 usermod -aG lp,lpadmin shyciii
+#lpadmin -p EpsonL3060 -E -v socket://192.168.0.105:9100 -m escpr:0/cups/model/epson-inkjet-printer-escpr/Epson-L3060_Series-epson-escpr-en.ppd
 
 # Install SMB
 #apt install -y samba cifs-utils
