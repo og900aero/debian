@@ -22,6 +22,7 @@ apt-add-repository -y contrib non-free non-free-firmware
 
 # Sound and bluetooth
 apt install -y pulseaudio pavucontrol
+#apt install -y pipewire-audio pipewire-pulse wireplumber
 
 # Window management software and add-ons
 apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi yad
@@ -411,3 +412,4 @@ set +x
 
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
 echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
+#echo "systemctl --user enable pipewire pipewire-pulse wireplumber"
