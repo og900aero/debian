@@ -219,6 +219,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 # Automount for USB drives
 cd /home/Data/Linux/Compile/automount-usb
 bash configure.sh
+cd -
 
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
