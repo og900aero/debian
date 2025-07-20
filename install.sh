@@ -232,21 +232,23 @@ flush ruleset
 
 table inet filter {
 	chain input {
-	                 type filter hook input priority 0; policy drop;
+                 type filter hook input priority 0; policy drop;
 	
-	                 # accept any localhost traffic
-	                 iif lo accept
+                 # accept any localhost traffic
+                 iif lo accept
 	
-	                 # accept traffic originated from us
-	                 ct state established,related accept
+                 # accept traffic originated from us
+                 ct state established,related accept
 	
-	                 # accept neighbour discovery otherwise IPv6 connectivity breaks
-	                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
+                 # accept neighbour discovery otherwise IPv6 connectivity breaks
+                 icmpv6 type { nd-neighbor-solicit, nd-router-advert, nd-neighbor-advert } accept
 
-                         # SMB
-			 #ip saddr 192.168.0.0/24 tcp dport { 139, 445 } ct state new accept	
-			 #ip saddr 192.168.0.0/24 udp dport { 137, 138 }	ct state new accept
-	
+                 # SMB
+		 #ip saddr 192.168.0.0/24 tcp dport { 139, 445 } ct state new accept	
+		 #ip saddr 192.168.0.0/24 udp dport { 137, 138 } ct state new accept
+    
+		 # Localsend
+          	 ip saddr 192.168.0.0/24 tcp dport 53317 ct state new accept	
 	}
 	chain forward {
 		type filter hook forward priority 0; policy drop;
