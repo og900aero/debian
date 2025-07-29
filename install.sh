@@ -55,7 +55,7 @@ apt-file update
 # Install zoxide
 wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.8/zoxide_0.9.8-1_amd64.deb
 apt install -y ./zoxide_0.9.8-1_amd64.deb
-rm -rf zoxide_0.9.8-1_amd64.deb
+rm -rfv zoxide_0.9.8-1_amd64.deb
 
 # Androidhoz
 # apt install -y adb fastboot android-file-transfer
@@ -69,7 +69,7 @@ apt update
 apt install -y google-chrome-stable
 
 # Mount Data partition and privilege settings
-#mkdir -p /home/Data
+mkdir -p /home/Data
 chmod 744 /home/Data
 chown shyciii:users /home/Data
 #mount "$PARTITION"
@@ -190,26 +190,17 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 # Install Fastfetch
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.46.0/fastfetch-linux-amd64.deb
 apt install -y ./fastfetch-linux-amd64.deb
-rm -rf fastfetch-linux-amd64.deb
+rm -rfv fastfetch-linux-amd64.deb
 
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
-#env HOME=/home/shyciii USER=shyciii bash -c 'curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin'
-
-# Install lf file manager
-#apt install -y golang
-#env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
-#apt autoremove --purge -y golang
-#cp -v /root/go/bin/lf /usr/local/bin
-#rm -rf /root/go
 
 # Install yazi file manager
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#rustup update
-#git clone https://github.com/sxyazi/yazi.git
-#cd yazi/
-#cargo build --release
-#cp -v target/release/yazi /usr/local/bin/yazi
+#wget https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-musl.zip
+#unzip yazi-x86_64-unknown-linux-musl.zip -d /usr/local/bin/
+#rm -v yazi-x86_64-unknown-linux-musl.zip
+#mv -v /usr/local/bin/yazi-x86_64-unknown-linux-musl/yazi /usr/local/bin/yazi-x86_64-unknown-linux-musl/ya /usr/local/bin/
+#rm -rfv /usr/local/bin/yazi-x86_64-unknown-linux-musl/
 #ya pack -a yazi-rs/plugins#full-border
 #ya pack -a yazi-rs/plugins#chmod
 #ya pack -a yazi-rs/plugins#hide-preview
@@ -263,7 +254,6 @@ EOF
 systemctl enable --now nftables.service
 
 # Restore own config files
-#mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
 
 chown -R shyciii:users /home/shyciii/
@@ -271,7 +261,7 @@ chown -R shyciii:users /home/shyciii/
 cp -vr /home/shyciii/.config/lf /root/.config/
 cp -vr /home/shyciii/.config/micro /root/.config/
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
-rm -rf /home/shyciii/usr
+rm -rfv /home/shyciii/usr
 
 # Set default terminal emulator
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
@@ -292,7 +282,7 @@ chmod +t /home/Data/.Trash
 # Install Delta (diff program instead of)
 wget https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
 apt install -y ./git-delta_0.18.2_amd64.deb
-rm -rf git-delta_0.18.2_amd64.deb
+rm -rfv git-delta_0.18.2_amd64.deb
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
@@ -414,7 +404,7 @@ chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
 
-rm -rf /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop
+rm -rfv /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop
 
 set +x
 
