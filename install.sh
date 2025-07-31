@@ -211,6 +211,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 #ya pack -a dawsers/fuse-archive
 #ya pack -a KKV9/compress
 #ya pack -a TD-Sky/sudo
+#xdg-mime default yazi.desktop inode/directory
 
 # Automount for USB drives
 cd /home/Data/Linux/Compile/automount-usb
