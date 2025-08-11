@@ -21,9 +21,8 @@ apt install -y software-properties-common
 apt-add-repository -y contrib non-free non-free-firmware
 
 # Enable backports for libheif1
-echo "deb http://deb.debian.org/debian bookworm-backports main" | tee -a /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/sources.list
 apt update
-apt install -t bookworm-backports libheif1
 
 # Sound and bluetooth
 apt install -y pulseaudio pavucontrol
