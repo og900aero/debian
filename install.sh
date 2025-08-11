@@ -39,7 +39,7 @@ apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m
 
 # Other programs
-apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu eza zoxide
+apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu eza zoxide fastfetch
 
 # For compiles
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libcurl3-nss libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
@@ -188,9 +188,9 @@ systemctl enable --now suspend@service
 systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
 
 # Install Fastfetch
-wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.46.0/fastfetch-linux-amd64.deb
-apt install -y ./fastfetch-linux-amd64.deb
-rm -rfv fastfetch-linux-amd64.deb
+#wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.46.0/fastfetch-linux-amd64.deb
+#apt install -y ./fastfetch-linux-amd64.deb
+#rm -rfv fastfetch-linux-amd64.deb
 
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
