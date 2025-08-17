@@ -402,9 +402,6 @@ sysctl --system
 
 rm -rfv /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop
 
-apt install -y dconf-cli
-dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-
 set +x
 
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
