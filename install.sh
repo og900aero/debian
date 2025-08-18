@@ -400,7 +400,7 @@ chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
 
-rm -rfv /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop
+rm -rfv /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop 
 
 set +x
 
