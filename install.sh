@@ -47,13 +47,13 @@ apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxi
 apt install -y apt-file testdisk duf tealdeer ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim eza psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps
 apt-file update
 
-# Install zoxide
-#wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.8/zoxide_0.9.8-1_amd64.deb
-#apt install -y ./zoxide_0.9.8-1_amd64.deb
-#rm -rfv zoxide_0.9.8-1_amd64.deb
+# Install LocalSend
+wget https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
+apt install -y ./LocalSend-1.17.0-linux-x86-64.deb
+rm -rfv LocalSend-1.17.0-linux-x86-64.deb
 
-# Androidhoz
-# apt install -y adb fastboot android-file-transfer
+# For Android
+# apt install -y adb fastboot
 
 # Install Chrome Browser
 cat <<'EOF' > /etc/apt/sources.list.d/google-chrome.list
