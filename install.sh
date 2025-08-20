@@ -350,6 +350,12 @@ chown root:root /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 systemctl restart NetworkManager
 
+# Turn off powersafe on wifi driver
+cat <<'EOF' > /etc/NetworkManager/conf.d/wifi-powersave.conf
+[connection]
+wifi.powersave = 2
+EOF
+
 # Custom name resolution
 cat <<'EOF' > /etc/NetworkManager/NetworkManager.conf
 [main]
