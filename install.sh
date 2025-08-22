@@ -332,6 +332,10 @@ apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-t
 apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
+# Less boot-up time
+systemctl disable NetworkManager-wait-online.service
+systemctl mask NetworkManager-wait-online.service
+
 # Turn off Wifi when an ethernet cable is connected
 cat <<'EOF' > /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 #!/bin/bash
