@@ -29,7 +29,7 @@ apt install -y pulseaudio pavucontrol
 #apt install -y pipewire-audio pipewire-pulse wireplumber
 
 # Window management software and add-ons
-apt install -y i3lock xautolock xclip rofi dunst libnotify-bin bspwm sxhkd polybar acpi yad
+apt install -y i3lock xautolock xclip rofi dunst libnotify-bin sxhkd polybar acpi yad
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
