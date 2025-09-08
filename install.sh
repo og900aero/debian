@@ -269,8 +269,8 @@ cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
 # Set default terminal emulator
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 100
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
 
 # Set default text editor
 update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
