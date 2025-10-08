@@ -47,7 +47,7 @@ apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnom
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
 
 # Others
-apt install -y apt-file testdisk duf tealdeer ripgrep xdotool pmount freerdp3-x11 libsecret-tools wmctrl cuetools shntool flac maim eza psmisc dbus-x11 gnome-keyring lxpolkit light heif-gdk-pixbuf bc x11-apps
+apt install -y apt-file testdisk duf tealdeer ripgrep xdotool git-delta pmount freerdp3-x11 libsecret-tools wmctrl cuetools shntool flac maim eza psmisc dbus-x11 gnome-keyring lxpolkit light heif-gdk-pixbuf bc x11-apps
 apt-file update
 
 # Install LocalSend
@@ -259,11 +259,6 @@ update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
 mkdir -p /home/Data/.Trash
 chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
-
-# Install Delta (diff program instead of)
-wget https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
-apt install -y ./git-delta_0.18.2_amd64.deb
-rm -rfv git-delta_0.18.2_amd64.deb
 
 # Printing
 apt install -y cups system-config-printer printer-driver-escpr
