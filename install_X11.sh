@@ -32,22 +32,22 @@ apt install -y pulseaudio pavucontrol
 #apt install -y pipewire-audio pipewire-pulse wireplumber
 
 # Window management software and add-ons
-apt install -y i3lock xautolock xclip rofi dunst libnotify-bin polybar acpi yad xdo
+apt install -y i3lock xclip rofi dunst libnotify-bin polybar acpi yad xdo
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
 # File manager add-ons
-apt install -y unrar-free libfuse3-3 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m feh
+apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m feh
 
 # Other programs
 apt install -y imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find
 
 # For compiles
-apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libcurl3-nss libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
+apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
 
 # Others
-apt install -y apt-file testdisk duf tealdeer ripgrep xdotool pmount freerdp2-x11 libsecret-tools wmctrl cuetools shntool flac maim eza psmisc dbus-x11 gnome-keyring policykit-1-gnome light heif-gdk-pixbuf bc x11-apps
+apt install -y apt-file testdisk duf tealdeer ripgrep xdotool pmount freerdp3-x11 libsecret-tools wmctrl cuetools shntool flac maim eza psmisc dbus-x11 gnome-keyring lxpolkit light heif-gdk-pixbuf bc x11-apps
 apt-file update
 
 # Install LocalSend
@@ -306,7 +306,7 @@ apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-t
 
 # Network management
 apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
-head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
+#head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
 # Less boot-up time
 systemctl disable NetworkManager-wait-online.service
