@@ -110,6 +110,7 @@ echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
 echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
 
 # Video drivers + graphical interface + keyboard + mouse + Intel processor addons
+apt remove -y intel-media-va-driver
 apt install -y xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver-non-free
 
 # change log settings
@@ -297,11 +298,11 @@ usermod -aG lp,lpadmin shyciii
 apt purge -y xdg-desktop-portal-gtk
 
 # Remove unnecessary programs
-apt autoremove --purge -y nano vim-common firebird3.0-common bluez laptop-mode-tools laptop-detect
+apt autoremove --purge -y nano vim-common bluez laptop-detect
 
 # Network management
 apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
-#head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
+head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
 # Less boot-up time
 systemctl disable NetworkManager-wait-online.service
@@ -390,7 +391,7 @@ chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
 
-rm -rfv /etc/wpa_supplicant.conf /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop 
+rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop 
 
 set +x
 
