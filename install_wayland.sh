@@ -23,7 +23,7 @@ apt update
 apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol
 
 # Window management software and add-ons
-apt install -y swaylock rofi dunst libnotify-bin waybar acpi brightnessctl
+apt install -y swaylock swayidle wofi dunst libnotify-bin waybar acpi brightnessctl
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
