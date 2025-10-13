@@ -111,7 +111,7 @@ echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
 
 # Video drivers + graphical interface + keyboard + mouse + Intel processor addons
 apt remove -y intel-media-va-driver
-apt install -y xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings intel-media-va-driver-non-free
+apt install -y xserver-xorg-core xserver-xorg-input-synaptics xserver-xorg-input-mouse xserver-xorg-input-libinput xserver-xorg-input-kbd xinit xfonts-encodings
 
 # change log settings
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
