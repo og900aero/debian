@@ -100,27 +100,8 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
-# Lock screen after sleep
-cat <<'EOF' > /etc/systemd/system/suspend@.service
-[Unit]
-Description=User suspend actions
-Before=sleep.target
-
-[Service]
-User=shyciii
-Type=oneshot
-RemainAfterExit=yes
-Environment=DISPLAY=:0
-ExecStart=/bin/sh -c '/usr/bin/i3lock --color=000000 -i ~/Pictures/Meghan.png'
-
-[Install]
-WantedBy=sleep.target
-EOF
-systemctl daemon-reload
-#systemctl enable --now suspend@service
-
 # Disable services
-systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target
+systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target suspend.target
 
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
