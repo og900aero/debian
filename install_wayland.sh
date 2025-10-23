@@ -29,7 +29,7 @@ apt install -y xwayland swaylock swayidle rofi dunst libnotify-bin waybar acpi b
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
 # File manager add-ons
-apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl w3m swayimg
+apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl swayimg
 
 # Other programs
 apt install -y v imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find
