@@ -23,16 +23,16 @@ apt update
 apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol
 
 # Window management software and add-ons
-apt install -y xwayland swaylock swayidle rofi dunst libnotify-bin waybar acpi brightnessctl clipman swaybg
+apt install -y xwayland swaylock swayidle dunst libnotify-bin acpi brightnessctl clipman swaybg swayimg
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer
 
 # File manager add-ons
-apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl swayimg
+apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl
 
 # Other programs
-apt install -y v imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find
+apt install -y v imagemagick libreoffice libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find udiskie
 
 # For compiles
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
