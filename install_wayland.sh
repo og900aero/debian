@@ -9,10 +9,13 @@ apt update && apt upgrade -y && apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Add contrib, non-free non-free-firmware
-cat <<EOF >/etc/apt/sources.list
+#cat <<EOF >/etc/apt/sources.list
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
 EOF
 
 # Enable backports for libheif1
@@ -278,21 +281,21 @@ sysctl --system
 rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop
 
 ## About Hyprland
-cat <<EOF >/etc/apt/sources.list.d/unstable.sources
-Types: deb deb-src
-URIs: http://deb.debian.org/debian/
-Suites: sid
-Components: main contrib non-free non-free-firmware
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-EOF
+#cat <<EOF >/etc/apt/sources.list.d/unstable.sources
+#Types: deb deb-src
+#URIs: http://deb.debian.org/debian/
+#Suites: sid
+#Components: main contrib non-free non-free-firmware
+#Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+#EOF
 
-apt update
-apt install -t sid libcc1-0 
-apt -t sid install gcc-15 g++-15
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-15 150
-update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-15 150
-wget https://raw.githubusercontent.com/imchocomint/hyprplus/main/bootstrap.sh
-bash ./bootstrap.sh
+#apt update
+#apt install -t sid libcc1-0 
+#apt -t sid install gcc-15 g++-15
+#update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-15 150
+#update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-15 150
+#wget https://raw.githubusercontent.com/imchocomint/hyprplus/main/bootstrap.sh
+#bash ./bootstrap.sh
 ##
 
 set +x
