@@ -9,11 +9,11 @@ apt update && apt upgrade -y && apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Add contrib, non-free non-free-firmware
-cat <<EOF >/etc/apt/sources.list
-deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
-deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
-EOF
+#cat <<EOF >/etc/apt/sources.list
+#deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+#deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+#deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+#EOF
 
 # Enable backports for libheif1
 echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/sources.list
