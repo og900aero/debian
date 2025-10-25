@@ -30,6 +30,7 @@ apt install -y xwayland swaylock dunst libnotify-bin rofi acpi brightnessctl cli
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-noto-color-emoji
+# apt install -y font-manager
 
 # File manager add-ons
 apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl chafa
