@@ -166,8 +166,8 @@ cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
 # Set default terminal emulator
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 100
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
+#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
 
 # Set default text editor
 update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
@@ -271,8 +271,9 @@ echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
 
 #update-desktop-database /home/shciii/.local/share/applications
-# Set brightness to 75%
-light -S 75
+
+# Set brightness to 76%
+brightnessctl set 76%
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
@@ -289,15 +290,6 @@ rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseau
 #Components: main contrib non-free non-free-firmware
 #Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 #EOF
-
-#apt update
-#apt install -t sid libcc1-0 
-#apt -t sid install gcc-15 g++-15
-#update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-15 150
-#update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-15 150
-#wget https://raw.githubusercontent.com/imchocomint/hyprplus/main/bootstrap.sh
-#bash ./bootstrap.sh
-##
 
 set +x
 
