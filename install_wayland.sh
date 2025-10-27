@@ -285,6 +285,7 @@ rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseau
 # Add hungary location
 sed -i 's/^# *\(hu_HU\.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen
+#update-locale LC_TIME=hu_HU.UTF-8
 update-locale
 
 ## About Hyprland
