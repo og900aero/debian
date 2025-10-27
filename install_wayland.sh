@@ -282,6 +282,11 @@ sysctl --system
 
 rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop
 
+# Add hungary location
+sed -i 's/^# *\(hu_HU\.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen hu_HU.UTF-8
+update-locale
+
 ## About Hyprland
 #cat <<EOF >/etc/apt/sources.list.d/unstable.sources
 #Types: deb deb-src
