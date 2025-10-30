@@ -288,21 +288,12 @@ locale-gen
 #update-locale LC_TIME=hu_HU.UTF-8
 update-locale
 
-# Hyprlock pam
+# Hyprlock PAM
 cat <<'EOF' >> /etc/pam.d/hyprlock
 # Minimal PAM configuration for Hyprlock (Debian)
 auth      include   common-auth
 account   include   common-account
 EOF
-
-## About Hyprland
-#cat <<EOF >/etc/apt/sources.list.d/unstable.sources
-#Types: deb deb-src
-#URIs: http://deb.debian.org/debian/
-#Suites: sid
-#Components: main contrib non-free non-free-firmware
-#Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-#EOF
 
 set +x
 
