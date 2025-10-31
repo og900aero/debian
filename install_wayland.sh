@@ -290,7 +290,6 @@ update-locale
 
 # Hyprlock PAM
 cat <<'EOF' >> /etc/pam.d/hyprlock
-# Minimal PAM configuration for Hyprlock (Debian)
 auth      include   common-auth
 account   include   common-account
 EOF
