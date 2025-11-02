@@ -18,7 +18,7 @@ deb http://security.debian.org/debian-security trixie-security main contrib non-
 deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
 EOF
 
-# Enable backports for libheif1
+# Enable backports
 echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/sources.list
 apt update
 
