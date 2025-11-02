@@ -46,8 +46,10 @@ apt install -y apt-file testdisk duf tealdeer ripgrep git-delta freerdp3-x11 lib
 apt-file update
 
 # Install LocalSend
-wget -O - https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb | sudo dpkg -i -
-sudo apt install -f # Ezzel feloldod a függőségi problémákat
+wget https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
+dpkg -i LocalSend-1.17.0-linux-x86-64.deb
+rm -rf LocalSend-1.17.0-linux-x86-64.deb
+sudo apt install -f
 
 wget -qO /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
 cat <<EOF > /etc/apt/sources.list.d/google-chrome.list
