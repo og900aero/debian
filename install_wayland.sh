@@ -162,7 +162,7 @@ tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/sh
 
 chown -R shyciii:users /home/shyciii/
 
-cp -vr /home/shyciii/.config/lf /root/.config/
+ln -s /home/shyciii/.config/lf /root/.config/lf
 cp -vr /home/shyciii/.config/micro /root/.config/
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
