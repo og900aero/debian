@@ -29,7 +29,7 @@ apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol
 apt install -y xwayland swaylock dunst libnotify-bin rofi acpi brightnessctl clipman swaybg swayimg grim slurp wf-recorder
 
 # Fonts
-apt install -y fonts-font-awesome fonts-dejavu fonts-noto-color-emoji
+apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-noto-color-emoji
 # apt install -y font-manager
 
 # File manager add-ons
