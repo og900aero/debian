@@ -26,7 +26,7 @@ apt update
 apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol
 
 # Window management software and add-ons
-apt install -y xwayland swaylock dunst libnotify-bin rofi acpi brightnessctl clipman swaybg swayimg grim slurp wf-recorder
+apt install -y xwayland swaylock dunst libnotify-bin rofi acpi brightnessctl clipman swaybg grim slurp wf-recorder
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-noto-color-emoji
