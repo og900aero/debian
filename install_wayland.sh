@@ -192,7 +192,7 @@ apt purge -y xdg-desktop-portal-gtk
 apt autoremove --purge -y nano vim-common bluez laptop-detect
 
 # Network management
-apt install -y network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
+apt install -y network-manager network-manager-gnome wireguard-tools openresolv
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
 
 # Less boot-up time
@@ -247,7 +247,6 @@ nameserver 1.1.1.1
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
-chattr +i /etc/resolv.conf
 
 # Default programs under root user
 cat <<'EOF' > /root/.bashrc
