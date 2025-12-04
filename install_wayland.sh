@@ -49,7 +49,7 @@ apt-file update
 wget https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
 dpkg -i LocalSend-1.17.0-linux-x86-64.deb
 rm -rf LocalSend-1.17.0-linux-x86-64.deb
-sudo apt install -f
+apt install -f
 
 wget -qO /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
 cat <<EOF > /etc/apt/sources.list.d/google-chrome.list
@@ -267,7 +267,7 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 
 # Possibility to restart and shutdown a given user without password
 # echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
-echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount" >> /etc/sudoers
+echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick" >> /etc/sudoers
 
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
