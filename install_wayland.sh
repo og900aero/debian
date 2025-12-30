@@ -290,6 +290,9 @@ chown shyciii:shyciii /mnt/sshfs
 sysctl --system
 
 rm -rfv /usr/share/applications/btop.desktop /usr/share/applications/org.pulseaudio.pavucontrol.desktop
+echo "NoDisplay=true" >> /usr/share/applications/display-im7.q16.desktop
+echo "NoDisplay=true" >> /usr/share/applications/qt5ct.desktop
+echo "NoDisplay=true" >> /usr/share/applications/qt6ct.desktop
 
 # Add hungary location
 sed -i 's/^# *\(hu_HU\.UTF-8 UTF-8\)/\1/' /etc/locale.gen
