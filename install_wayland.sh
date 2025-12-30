@@ -23,7 +23,7 @@ echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/
 apt update
 
 # Sound and bluetooth
-apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol
+apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol blueman
 
 # Window management software and add-ons
 apt install -y xwayland swaylock dunst libnotify-bin acpi brightnessctl clipman swaybg grim slurp wf-recorder
@@ -269,6 +269,13 @@ sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
 # echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
 echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick" >> /etc/sudoers
 
+cat <<'EOF' > /etc/sudoers.d/custom
+Defaults    env_keep += "EDITOR"
+shyciii ALL=(ALL:ALL) ALL
+shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick
+EOF
+chmod 440 /etc/sudoers.d/custom
+
 # Open Gnome keyring automatically on login
 sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
 
@@ -298,6 +305,7 @@ EOF
 
 set +x
 
+visudo -cf /etc/sudoers.d/custom || echo "ERROR: The custom sudoers file sytntax is wrong!"
 echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
 echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
 #echo "systemctl --user enable pipewire pipewire-pulse wireplumber"
