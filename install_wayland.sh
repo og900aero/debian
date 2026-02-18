@@ -112,6 +112,9 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
+# Install fresh text editor
+curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && sudo dpkg -i fresh-editor.deb
+
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
@@ -164,7 +167,7 @@ chown -R shyciii:users /home/shyciii/
 
 mkdir -p /root/.config
 ln -s /home/shyciii/.config/lf /root/.config/lf
-ln -s /home/shyciii/.config/micro /root/.config/micro
+ln -s /home/shyciii/.config/fresh /root/.config/fresh
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
@@ -173,7 +176,7 @@ rm -rfv /home/shyciii/usr
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
 
 # Set default text editor
-update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
+update-alternatives --install /usr/bin/editor editor /usr/local/bin/fresh 100
 
 # Trash folder settings
 mkdir -p /home/Data/.Trash
@@ -250,8 +253,8 @@ EOF
 
 # Default programs under root user
 cat <<'EOF' > /root/.bashrc
-export VISUAL=micro
-export EDITOR=micro
+export VISUAL=fresh
+export EDITOR=fresh
 EOF
 
 # Stronger security setting for SSH client
@@ -281,8 +284,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 
 #update-desktop-database /home/shciii/.local/share/applications
 
-# Set brightness to 76%
-brightnessctl set 76%
+# Set brightness to 66%
+brightnessctl set 66%
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
