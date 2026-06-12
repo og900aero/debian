@@ -9,7 +9,7 @@ apt update && apt upgrade -y && apt install -y sudo curl
 usermod -aG sudo shyciii
 
 # Add contrib, non-free non-free-firmware
-#cat <<EOF >/etc/apt/sources.list
+cat <<EOF >/etc/apt/sources.list
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
@@ -36,7 +36,7 @@ apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-n
 apt install -y unrar-free libfuse3-4 ifuse sshfs mediainfo zip unzip zstd 7zip poppler-utils ffmpegthumbnailer xlsx2csv bat catdoc docx2txt jq libimage-exiftool-perl chafa
 
 # Other programs
-apt install -y v imagemagick libreoffice libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find udiskie
+apt install -y imagemagick libreoffice libreoffice-gtk3 libreoffice-l10n-hu transmission-gtk gnome-calculator mpv rsync grsync btop inxi ffmpeg ncdu zoxide fastfetch fd-find udiskie
 
 # For compiles
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libgtkmm-3.0-dev libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
@@ -87,7 +87,7 @@ echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/local.conf
 
 # Other sysctl config
 echo "net.core.rmem_max=4194304" >> /etc/sysctl.d/local.conf
-echo "net.core.wmem_max=1048576" >> /etc/sysctl.d/local.conf
+echo "net.core.wmem_max=4194304" >> /etc/sysctl.d/local.conf
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
 echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
@@ -113,7 +113,7 @@ systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.targe
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Install fresh text editor
-curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && sudo dpkg -i fresh-editor.deb
+curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && dpkg -i fresh-editor.deb
 
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
@@ -193,7 +193,7 @@ usermod -aG lp,lpadmin shyciii
 apt purge -y xdg-desktop-portal-gtk
 
 # Remove unnecessary programs
-apt autoremove --purge -y nano vim-common bluez laptop-detect
+apt autoremove --purge -y nano vim-common laptop-detect
 
 # Network management
 apt install -y network-manager network-manager-gnome wireguard-tools openresolv
@@ -266,13 +266,7 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
 EOF
 
-# sudo to add EDITOR environment
-sed -i '/env_reset/a Defaults    env_keep += "EDITOR"' /etc/sudoers
-
-# Possibility to restart and shutdown a given user without password
-# echo "shyciii ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /bin/rmdir" >> /etc/sudoers
-echo "shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick" >> /etc/sudoers
-
+# sudo to add EDITOR environment and possibility to restart and shutdown a given user without password
 cat <<'EOF' > /etc/sudoers.d/custom
 Defaults    env_keep += "EDITOR"
 shyciii ALL=(ALL:ALL) ALL
