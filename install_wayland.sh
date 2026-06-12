@@ -91,9 +91,9 @@ echo "net.core.wmem_max=1048576" >> /etc/sysctl.d/local.conf
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
 echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
-echo "vm.dirty_ratio=5" >> /etc/sysctl.d/local.conf
+echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
 echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
-echo "vm.min_free_kbytes=41943" >> /etc/sysctl.d/local.conf
+echo "vm.min_free_kbytes=81920" >> /etc/sysctl.d/local.conf
 
 # change log settings
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
@@ -145,7 +145,8 @@ table inet filter {
 		  #ip saddr 192.168.0.0/24 udp dport { 137, 138 }	ct state new accept
 
           # Localsend
-          ip saddr 192.168.0.0/24 tcp dport 53317 ct state new accept
+          ip saddr 192.168.0.0/24 meta l4proto { tcp, udp } th dport 53317 ct state new accept
+          ip saddr 172.20.0.0/16 meta l4proto { tcp, udp } th dport 53317 ct state new accept
           # Torrent
           ip daddr 192.168.0.0/24 tcp dport 51413 ct state new accept
           ip daddr 192.168.0.0/24 udp dport 51413 ct state new accept
