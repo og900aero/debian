@@ -46,9 +46,9 @@ apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuet
 apt-file update
 
 # Install LocalSend
-wget https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
-dpkg -i LocalSend-1.17.0-linux-x86-64.deb
-rm -rf LocalSend-1.17.0-linux-x86-64.deb
+wget https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-x86-64.deb
+dpkg -i LocalSend-1.18.2-linux-x86-64.deb
+rm -rf LocalSend-1.18.2-linux-x86-64.deb
 apt install -f
 
 wget -qO /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
