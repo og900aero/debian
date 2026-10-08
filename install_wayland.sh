@@ -75,11 +75,21 @@ sed -i 's/quiet/loglevel=3/g' /etc/default/grub
 update-grub
 
 # Create and set swap file
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+SWAP_MIB=$(awk '/MemTotal/ {print int(($2 + 1048575) / 1048576) * 1024}' /proc/meminfo)
+dd if=/dev/zero of=/swapfile bs=1M count="$SWAP_MIB" status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-echo "/swapfile     none     swap    sw    0    0" >> /etc/fstab
+echo "/swapfile     none     swap    defaults    0    0" >> /etc/fstab
+
+# Set hibernation
+RESUME_UUID=$(findmnt -no UUID -T "$SWAPFILE")
+RESUME_OFFSET=$(filefrag -v "$SWAPFILE" | awk 'NR==4 {gsub(/\./, "", $4); print $4}')
+sed -i -E 's/ ?resume(_offset)?=[^ "]*//g' /etc/default/grub
+sed -i -E "s/^(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*)\"/\1 resume=UUID=$RESUME_UUID resume_offset=$RESUME_OFFSET\"/" /etc/default/grub
+echo "RESUME=UUID=$RESUME_UUID" > /etc/initramfs-tools/conf.d/resume
+update-grub
+update-initramfs -u -k all
 
 # Enable BBR network congestion
 echo "net.core.default_qdisc = fq" >> /etc/sysctl.d/local.conf
@@ -94,6 +104,7 @@ echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
 echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
 echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
 echo "vm.min_free_kbytes=81920" >> /etc/sysctl.d/local.conf
+sysctl -q -p /etc/sysctl.d/local.conf
 
 # change log settings
 echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
@@ -107,7 +118,7 @@ sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ign
 sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 # Disable services
-systemctl mask suspend-then-hibernate.target hibernate.target hybrid-sleep.target suspend.target
+systemctl mask suspend-then-hibernate.target hybrid-sleep.target suspend.target
 
 # Install Oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
