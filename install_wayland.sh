@@ -270,7 +270,7 @@ EOF
 cat <<'EOF' > /etc/sudoers.d/custom
 Defaults    env_keep += "EDITOR"
 shyciii ALL=(ALL:ALL) ALL
-shyciii ALL=(ALL) NOPASSWD: /bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick
+shyciii ALL=(ALL) NOPASSWD: /usr/bin/rmdir, /usr/bin/umount, /usr/bin/wg-quick up wg0, /usr/bin/wg-quick down wg0
 EOF
 chmod 440 /etc/sudoers.d/custom
 
