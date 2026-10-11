@@ -23,7 +23,8 @@ echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/
 apt update
 
 # Sound and bluetooth
-apt install -y pipewire-audio pipewire-pulse wireplumber pavucontrol blueman
+apt install -y pipewire-audio pavucontrol blueman
+systemctl enable --now bluetooth
 
 # Window management software and add-ons
 apt install -y xwayland swaylock dunst libnotify-bin acpi brightnessctl cliphist swaybg grim slurp wf-recorder wlrctl
