@@ -43,7 +43,7 @@ apt install -y imagemagick libreoffice libreoffice-gtk3 libreoffice-l10n-hu tran
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libgtkmm-3.0-dev libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
 
 # Others
-apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity
+apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity ncal
 apt-file update
 
 # Install LocalSend
