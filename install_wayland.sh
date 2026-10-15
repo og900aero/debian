@@ -332,7 +332,7 @@ echo y | /home/Data/Linux/compile/elanmoc-clear-storage || true
 usbreset 04f3:0c85 || true
 systemctl start fprintd
 
-fprintd-enroll -f left-thumb-finger shyciii
+fprintd-enroll -f left-thumb shyciii
 # left-thumb, left-little-finger, left-index-finger, left-middle-finger, left-ring-finger, and same with right side
 
 set +x
