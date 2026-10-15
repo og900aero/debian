@@ -27,7 +27,7 @@ apt install -y pipewire-audio pavucontrol blueman
 systemctl enable --now bluetooth
 
 # Window management software and add-ons
-apt install -y xwayland swaylock dunst libnotify-bin acpi brightnessctl cliphist swaybg grim slurp wf-recorder wlrctl
+apt install -y xwayland dunst libnotify-bin acpi brightnessctl cliphist swaybg grim slurp wf-recorder wlrctl
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-noto-color-emoji
@@ -45,6 +45,10 @@ apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxi
 # Others
 apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity ncal
 apt-file update
+
+# Lockscreen
+apt install -t trixie-backports hyprlock
+# apt install -y swaylock
 
 # Install LocalSend
 wget https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-x86-64.deb
