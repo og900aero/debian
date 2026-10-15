@@ -310,12 +310,6 @@ locale-gen
 #update-locale LC_TIME=hu_HU.UTF-8
 update-locale
 
-# Hyprlock PAM
-cat <<'EOF' >> /etc/pam.d/hyprlock
-auth      include   common-auth
-account   include   common-account
-EOF
-
 # Fingerprint (ELAN 04f3:0c85)
 apt install -y fprintd libpam-fprintd usbutils /home/Data/Linux/compile/libfprint-2-2_1.94.9-1+elan0c851_amd64.deb
 apt-mark hold libfprint-2-2
