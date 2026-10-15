@@ -122,7 +122,7 @@ sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/syst
 systemctl mask suspend-then-hibernate.target hybrid-sleep.target suspend.target
 
 # Install Oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
+#curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Install fresh text editor
 curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && dpkg -i fresh-editor.deb
@@ -175,6 +175,7 @@ systemctl enable --now nftables.service
 
 # Restore own config files
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
+# copyzni kell a usr/local/bin tartalmát!!!
 
 chown -R shyciii:users /home/shyciii/
 
@@ -185,7 +186,6 @@ cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
 # Set default terminal emulator
-#update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 100
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
 
 # Set default text editor
@@ -197,8 +197,8 @@ chmod a+rw /home/Data/.Trash
 chmod +t /home/Data/.Trash
 
 # Printing
-apt install -y cups system-config-printer printer-driver-escpr
-usermod -aG lp,lpadmin shyciii
+#apt install -y cups system-config-printer printer-driver-escpr
+#usermod -aG lp,lpadmin shyciii
 #lpadmin -p EpsonL3060 -E -v socket://192.168.0.105:9100 -m escpr:0/cups/model/epson-inkjet-printer-escpr/Epson-L3060_Series-epson-escpr-en.ppd
 
 # Remove GTK package, because slow down startup GTK programs
@@ -315,6 +315,25 @@ cat <<'EOF' >> /etc/pam.d/hyprlock
 auth      include   common-auth
 account   include   common-account
 EOF
+
+# Fingerprint (ELAN 04f3:0c85)
+apt install -y fprintd libpam-fprintd usbutils /home/Data/Linux/compile/libfprint-2-2_1.94.9-1+elan0c851_amd64.deb
+apt-mark hold libfprint-2-2
+pam-auth-update --disable fprintd
+
+[ -f /etc/pam.d/swaylock.bak ] || cp /etc/pam.d/swaylock /etc/pam.d/swaylock.bak
+printf 'auth sufficient pam_unix.so nodelay nullok\nauth sufficient pam_fprintd.so max-tries=3 timeout=15\nauth required pam_deny.so\n' > /etc/pam.d/swaylock
+
+[ -f /etc/pam.d/sudo.bak ] || cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
+grep -q pam_fprintd /etc/pam.d/sudo || sed -i '/^@include common-auth/i auth sufficient pam_fprintd.so max-tries=1 timeout=5' /etc/pam.d/sudo
+
+systemctl stop fprintd
+echo y | /home/Data/Linux/compile/elanmoc-clear-storage || true
+usbreset 04f3:0c85 || true
+systemctl start fprintd
+
+fprintd-enroll -f left-thumb-finger shyciii
+# left-thumb, left-little-finger, left-index-finger, left-middle-finger, left-ring-finger, and same with right side
 
 set +x
 
