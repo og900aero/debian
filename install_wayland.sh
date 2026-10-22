@@ -106,9 +106,12 @@ echo "net.core.wmem_max=4194304" >> /etc/sysctl.d/local.conf
 echo "vm.swappiness=10" >> /etc/sysctl.d/local.conf
 echo "vm.vfs_cache_pressure=75" >> /etc/sysctl.d/local.conf
 echo "kernel.nmi_watchdog=0" >> /etc/sysctl.d/local.conf
-echo "vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
-echo "vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
 echo "vm.min_free_kbytes=81920" >> /etc/sysctl.d/local.conf
+echo "#vm.dirty_ratio=10" >> /etc/sysctl.d/local.conf
+echo "#vm.dirty_background_ratio=3" >> /etc/sysctl.d/local.conf
+echo "# Little write buffer for pendrive-copy's progress bar shows the real value" >> /etc/sysctl.d/local.conf
+echo "vm.dirty_bytes=67108864" >> /etc/sysctl.d/local.conf
+echo "vm.dirty_background_bytes=16777216" >> /etc/sysctl.d/local.conf
 sysctl -q -p /etc/sysctl.d/local.conf
 
 # change log settings
