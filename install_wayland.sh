@@ -208,12 +208,6 @@ chmod +t /home/Data/.Trash
 #usermod -aG lp,lpadmin shyciii
 #lpadmin -p EpsonL3060 -E -v socket://192.168.0.105:9100 -m escpr:0/cups/model/epson-inkjet-printer-escpr/Epson-L3060_Series-epson-escpr-en.ppd
 
-# Remove GTK package, because slow down startup GTK programs
-apt purge -y xdg-desktop-portal-gtk
-
-# Remove unnecessary programs
-apt autoremove --purge -y nano vim-common laptop-detect
-
 # Network management
 apt install -y network-manager network-manager-gnome wireguard-tools openresolv
 head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
@@ -335,6 +329,16 @@ systemctl start fprintd
 
 fprintd-enroll -f left-thumb shyciii
 # left-thumb, left-little-finger, left-index-finger, left-middle-finger, left-ring-finger, and same with right side
+
+# Remove GTK package, because slow down startup GTK programs
+apt purge -y xdg-desktop-portal-gtk
+
+# Remove unnecessary programs
+apt autoremove --purge -y nano vim-common laptop-detect modemmanager
+
+systemctl disable --now avahi-daemon.service avahi-daemon.socket
+sudo -u shycii XDG_RUNTIME_DIR=/run/user/$(id -u shycii) systemctl --user mask --now gcr-ssh-agent.socket gcr-ssh-agent.service
+
 
 set +x
 
