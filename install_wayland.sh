@@ -339,7 +339,6 @@ apt autoremove --purge -y nano vim-common laptop-detect modemmanager
 systemctl disable --now avahi-daemon.service avahi-daemon.socket
 sudo -u shycii XDG_RUNTIME_DIR=/run/user/$(id -u shycii) systemctl --user mask --now gcr-ssh-agent.socket gcr-ssh-agent.service
 
-
 set +x
 
 visudo -cf /etc/sudoers.d/custom || echo "ERROR: The custom sudoers file sytntax is wrong!"
