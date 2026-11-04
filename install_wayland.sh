@@ -189,6 +189,7 @@ chown -R shyciii:users /home/shyciii/
 mkdir -p /root/.config
 ln -s /home/shyciii/.config/lf /root/.config/lf
 ln -s /home/shyciii/.config/fresh /root/.config/fresh
+for f in settings.json bindings.json syntax colorschemes; do sudo ln -sfn /home/shyciii/.config/micro/$f /root/.config/micro/$f; done
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
