@@ -56,6 +56,13 @@ dpkg -i LocalSend-1.18.2-linux-x86-64.deb
 rm -rf LocalSend-1.18.2-linux-x86-64.deb
 apt install -f
 
+# Install fish shell
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_13/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:4.list
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:4/Debian_13/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_4.gpg > /dev/null
+apt update
+apt install -y fish
+chsh -s /usr/bin/fish shyciii
+
 wget -qO /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
 cat <<EOF > /etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main
