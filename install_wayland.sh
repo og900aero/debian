@@ -200,6 +200,13 @@ for f in settings.json bindings.json syntax colorschemes; do sudo ln -sfn /home/
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
+# Download newest fresh text editor
+wget https://github.com/micro-editor/micro/releases/download/nightly/micro-nightly-linux64.tar.gz
+tar xzvf micro-nightly-linux64.tar.gz
+mkdir -p "$HOME/.local/bin"
+mv -fv micro-nightly/micro "$HOME/.local/bin"
+rm -rf micro-nightly micro-nightly-linux64.tar.gz
+
 # Set default terminal emulator
 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
 
@@ -300,8 +307,8 @@ sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optiona
 
 #update-desktop-database /home/shciii/.local/share/applications
 
-# Set brightness to 66%
-brightnessctl set 66%
+# Set brightness to 70%
+brightnessctl set 70%
 
 mkdir -p /mnt/sshfs
 chown shyciii:shyciii /mnt/sshfs
