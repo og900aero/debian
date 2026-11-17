@@ -27,7 +27,7 @@ apt install -y pipewire-audio pavucontrol blueman
 systemctl enable --now bluetooth
 
 # Window management software and add-ons
-apt install -y xwayland dunst libnotify-bin acpi brightnessctl cliphist swaybg grim slurp wf-recorder wlrctl
+apt install -y xwayland dunst libnotify-bin acpi brightnessctl cliphist swaybg grim slurp wf-recorder wlrctl kanshi
 
 # Fonts
 apt install -y fonts-font-awesome fonts-dejavu ttf-mscorefonts-installer fonts-noto-color-emoji
