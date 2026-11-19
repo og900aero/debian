@@ -44,7 +44,7 @@ apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxi
 
 # Others
 apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity ncal yamllint speedtest-cli
-apt-file update
+apt-file update keyutils
 
 # Lockscreen
 apt install -t trixie-backports hyprlock
