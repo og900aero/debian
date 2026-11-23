@@ -8,18 +8,14 @@ exec > >(tee -a "output.log") 2>&1
 apt update && apt upgrade -y && apt install -y sudo curl
 usermod -aG sudo shyciii
 
-# Add contrib, non-free non-free-firmware
+# Add contrib, non-free non-free-firmware backports
 cat <<EOF >/etc/apt/sources.list
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
-deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian trixie-backports main contrib non-free non-free-firmware
 EOF
-
-# Enable backports
-echo "deb http://deb.debian.org/debian trixie-backports main" | tee -a /etc/apt/sources.list
+rm -f /etc/apt/sources.list.d/debian.sources
 apt update
 
 # Sound and bluetooth
@@ -43,18 +39,17 @@ apt install -y imagemagick libreoffice libreoffice-gtk3 libreoffice-l10n-hu tran
 apt install -y libxft-dev build-essential cmake make pkg-config fontconfig libxinerama-dev libxcb-res0 libgtkmm-3.0-dev libimlib2-dev libdbus-1-dev libx11-xcb-dev libxcb-res0-dev libyajl-dev libevent-dev bison ncurses-dev libxcb-util-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-cursor-dev libxcb-xinerama0-dev automake 
 
 # Others
-apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity ncal yamllint speedtest-cli
-apt-file update keyutils
+apt install -y apt-file testdisk tealdeer ripgrep git-delta libsecret-tools cuetools shntool flac eza psmisc gnome-keyring heif-gdk-pixbuf bc zenity ncal yamllint speedtest-cli keyutils gpg
+apt-file update
 
 # Lockscreen
-apt install -t trixie-backports hyprlock
-# apt install -y swaylock
+apt install -y -t trixie-backports hyprlock
 
 # Install LocalSend
 wget https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-x86-64.deb
 dpkg -i LocalSend-1.18.2-linux-x86-64.deb
 rm -rf LocalSend-1.18.2-linux-x86-64.deb
-apt install -f
+apt install -f -y
 
 # Install fish shell
 echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/4/Debian_13/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:4.list
@@ -63,23 +58,19 @@ apt update
 apt install -y fish
 chsh -s /usr/bin/fish shyciii
 
-wget -qO /usr/share/keyrings/google-linux-signing-key.gpg https://dl.google.com/linux/linux_signing_key.pub
-cat <<EOF > /etc/apt/sources.list.d/google-chrome.list
-deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main
-EOF
-apt update
-apt install -y google-chrome-stable
+# install Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install -y ./google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb
 
 # Mount Data partition and privilege settings
 mkdir -p /home/Data
 chmod 744 /home/Data
 chown shyciii:users /home/Data
-#mount "$PARTITION"
 
 # Modify fstab
 sed -i 's/errors=remount-ro/defaults,relatime/g' /etc/fstab
 sed -i 's/home\/Data      ext4    defaults/home\/Data      ext4    defaults,relatime/g' /etc/fstab
-#echo "$PARTITION      /home/Data      ext4     defaults,relatime    0    2" >> /etc/fstab
 
 # Modify grub timeout
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/g' /etc/default/grub
@@ -87,12 +78,13 @@ sed -i 's/quiet/loglevel=3/g' /etc/default/grub
 update-grub
 
 # Create and set swap file
+SWAPFILE=/swapfile
 SWAP_MIB=$(awk '/MemTotal/ {print int(($2 + 1048575) / 1048576) * 1024}' /proc/meminfo)
-dd if=/dev/zero of=/swapfile bs=1M count="$SWAP_MIB" status=progress
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile     none     swap    defaults    0    0" >> /etc/fstab
+dd if=/dev/zero of="$SWAPFILE" bs=1M count="$SWAP_MIB" status=progress
+chmod 600 "$SWAPFILE"
+mkswap "$SWAPFILE"
+swapon "$SWAPFILE"
+echo "$SWAPFILE     none     swap    defaults    0    0" >> /etc/fstab
 
 # Set hibernation
 RESUME_UUID=$(findmnt -no UUID -T "$SWAPFILE")
@@ -100,6 +92,7 @@ RESUME_OFFSET=$(filefrag -v "$SWAPFILE" | awk 'NR==4 {gsub(/\./, "", $4); print 
 sed -i -E 's/ ?resume(_offset)?=[^ "]*//g' /etc/default/grub
 sed -i -E "s/^(GRUB_CMDLINE_LINUX_DEFAULT=\"[^\"]*)\"/\1 resume=UUID=$RESUME_UUID resume_offset=$RESUME_OFFSET\"/" /etc/default/grub
 echo "RESUME=UUID=$RESUME_UUID" > /etc/initramfs-tools/conf.d/resume
+echo "RESUME_OFFSET=$RESUME_OFFSET" >> /etc/initramfs-tools/conf.d/resume
 update-grub
 update-initramfs -u -k all
 
@@ -121,16 +114,13 @@ echo "vm.dirty_bytes=67108864" >> /etc/sysctl.d/local.conf
 echo "vm.dirty_background_bytes=16777216" >> /etc/sysctl.d/local.conf
 sysctl -q -p /etc/sysctl.d/local.conf
 
+mkdir -p /etc/systemd/journald.conf.d /etc/systemd/system.conf.d /etc/systemd/logind.conf.d
 # change log settings
-echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
-
+printf '[Journal]\nMaxRetentionSec=15day\n' > /etc/systemd/journald.conf.d/60-local.conf
 # Set timeout
-sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
-
+printf '[Manager]\nDefaultTimeoutStopSec=5s\n' > /etc/systemd/system.conf.d/60-local.conf
 # Set notebook's lid settings
-sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
+printf '[Login]\nHandleLidSwitch=ignore\nHandleLidSwitchExternalPower=ignore\nHandleLidSwitchDocked=ignore\n' > /etc/systemd/logind.conf.d/60-local.conf
 
 # Disable services
 systemctl mask suspend-then-hibernate.target hybrid-sleep.target suspend.target
@@ -139,7 +129,8 @@ systemctl mask suspend-then-hibernate.target hybrid-sleep.target suspend.target
 #curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 
 # Install fresh text editor
-curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && dpkg -i fresh-editor.deb
+curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb"\" | cut -d '"' -f 4) -o fresh-editor.deb && dpkg -i fresh-editor.deb
+rm -f fresh-editor.deb
 
 # Eligibility for a regular user when attaching a fusemount
 sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
@@ -189,29 +180,32 @@ systemctl enable --now nftables.service
 
 # Restore own config files
 tar -xvf /home/Data/Linux/Backup/home_backup_debian.tar.zst --directory /home/shyciii
-# copyzni kell a usr/local/bin tartalmát!!!
 
-chown -R shyciii:users /home/shyciii/
+chown -R shyciii:shyciii /home/shyciii/
 
 mkdir -p /root/.config
 ln -s /home/shyciii/.config/lf /root/.config/lf
 ln -s /home/shyciii/.config/fresh /root/.config/fresh
+mkdir -p /root/.config/micro
 for f in settings.json bindings.json syntax colorschemes; do sudo ln -sfn /home/shyciii/.config/micro/$f /root/.config/micro/$f; done
 cp -vr /home/shyciii/usr/local/bin/* /usr/local/bin
 rm -rfv /home/shyciii/usr
 
-# Download newest fresh text editor
+# Download newest micro text editor
 wget https://github.com/micro-editor/micro/releases/download/nightly/micro-nightly-linux64.tar.gz
 tar xzvf micro-nightly-linux64.tar.gz
-mkdir -p "$HOME/.local/bin"
-mv -fv micro-nightly/micro "$HOME/.local/bin"
+mkdir -p "/home/shyciii/.local/bin"
+mv -fv micro-nightly/micro "/home/shyciii/.local/bin"
+chown shyciii:shyciii /home/shyciii/.local/bin/micro
 rm -rf micro-nightly micro-nightly-linux64.tar.gz
 
 # Set default terminal emulator
-update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
+# update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/foot 100
+update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /home/shyciii/.local/bin/kitty 100
 
 # Set default text editor
-update-alternatives --install /usr/bin/editor editor /usr/local/bin/fresh 100
+# update-alternatives --install /usr/bin/editor editor /usr/bin/fresh 100
+update-alternatives --install /usr/bin/editor editor /home/shyciii/.local/bin/micro 100
 
 # Trash folder settings
 mkdir -p /home/Data/.Trash
@@ -225,7 +219,12 @@ chmod +t /home/Data/.Trash
 
 # Network management
 apt install -y network-manager network-manager-gnome wireguard-tools openresolv
-head -n -5 /etc/network/interfaces > tmp.txt && mv tmp.txt /etc/network/interfaces
+
+cat <<'EOF' > /etc/network/interfaces
+source /etc/network/interfaces.d/*
+auto lo
+iface lo inet loopback
+EOF
 
 # Less boot-up time
 systemctl disable NetworkManager-wait-online.service
@@ -303,15 +302,11 @@ EOF
 chmod 440 /etc/sudoers.d/custom
 
 # Open Gnome keyring automatically on login
-sed -i '96s/^/\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n/' /etc/pam.d/login
-
+grep -q pam_gnome_keyring /etc/pam.d/login || printf 'auth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n' >> /etc/pam.d/login
 #update-desktop-database /home/shciii/.local/share/applications
 
 # Set brightness to 70%
 brightnessctl set 70%
-
-mkdir -p /mnt/sshfs
-chown shyciii:shyciii /mnt/sshfs
 
 sysctl --system
 
@@ -327,22 +322,22 @@ locale-gen
 update-locale
 
 # Fingerprint (ELAN 04f3:0c85)
-apt install -y fprintd libpam-fprintd usbutils /home/Data/Linux/compile/libfprint-2-2_1.94.9-1+elan0c851_amd64.deb
-apt-mark hold libfprint-2-2
-pam-auth-update --disable fprintd
+# apt install -y fprintd libpam-fprintd usbutils /home/Data/Linux/compile/libfprint-2-2_1.94.9-1+elan0c851_amd64.deb
+# apt-mark hold libfprint-2-2
+# pam-auth-update --disable fprintd
 
-[ -f /etc/pam.d/swaylock.bak ] || cp /etc/pam.d/swaylock /etc/pam.d/swaylock.bak
-printf 'auth sufficient pam_unix.so nodelay nullok\nauth sufficient pam_fprintd.so max-tries=3 timeout=15\nauth required pam_deny.so\n' > /etc/pam.d/swaylock
+# [ -f /etc/pam.d/swaylock.bak ] || cp /etc/pam.d/swaylock /etc/pam.d/swaylock.bak
+# printf 'auth sufficient pam_unix.so nodelay nullok\nauth sufficient pam_fprintd.so max-tries=3 timeout=15\nauth required pam_deny.so\n' > /etc/pam.d/swaylock
 
-[ -f /etc/pam.d/sudo.bak ] || cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
-grep -q pam_fprintd /etc/pam.d/sudo || sed -i '/^@include common-auth/i auth sufficient pam_fprintd.so max-tries=1 timeout=5' /etc/pam.d/sudo
+# [ -f /etc/pam.d/sudo.bak ] || cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
+# grep -q pam_fprintd /etc/pam.d/sudo || sed -i '/^@include common-auth/i auth sufficient pam_fprintd.so max-tries=1 timeout=5' /etc/pam.d/sudo
 
-systemctl stop fprintd
-echo y | /home/Data/Linux/compile/elanmoc-clear-storage || true
-usbreset 04f3:0c85 || true
-systemctl start fprintd
+# systemctl stop fprintd
+# echo y | /home/Data/Linux/compile/elanmoc-clear-storage || true
+# usbreset 04f3:0c85 || true
+# systemctl start fprintd
 
-fprintd-enroll -f left-thumb shyciii
+# fprintd-enroll -f left-thumb shyciii
 # left-thumb, left-little-finger, left-index-finger, left-middle-finger, left-ring-finger, and same with right side
 
 # Remove GTK package, because slow down startup GTK programs
@@ -352,13 +347,15 @@ apt purge -y xdg-desktop-portal-gtk
 apt autoremove --purge -y nano vim-common laptop-detect modemmanager
 
 systemctl disable --now avahi-daemon.service avahi-daemon.socket
-sudo -u shycii XDG_RUNTIME_DIR=/run/user/$(id -u shycii) systemctl --user mask --now gcr-ssh-agent.socket gcr-ssh-agent.service
+ln -sf /dev/null /etc/systemd/user/gcr-ssh-agent.socket
+ln -sf /dev/null /etc/systemd/user/gcr-ssh-agent.service
 
-tic -x -o /etc/terminfo ~/.local/kitty/lib/kitty/terminfo/kitty.terminfo
+tic -x -o /etc/terminfo /home/shyciii/.local/kitty.app/lib/kitty/terminfo/kitty.terminfo
 
 set +x
 
-visudo -cf /etc/sudoers.d/custom || echo "ERROR: The custom sudoers file sytntax is wrong!"
-echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
-echo "secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev"
+visudo -cf /etc/sudoers.d/custom || echo "ERROR: The custom sudoers file syntax is wrong!"
+# echo "Jelentkezz be a felhasználóddal, és add ki a következő parancsot:"
+# echo 'secret-tool store --label="RDP Password" rdp-server ipcim username felhasznalonev'
 #echo "systemctl --user enable pipewire pipewire-pulse wireplumber"
+echo "see log: grep -nE '^E:|No such file|command not found|cannot' $PWD/output.log" > /dev/tty
