@@ -352,6 +352,8 @@ ln -sf /dev/null /etc/systemd/user/gcr-ssh-agent.service
 
 tic -x -o /etc/terminfo /home/shyciii/.local/kitty.app/lib/kitty/terminfo/kitty.terminfo
 
+apt modernize-sources --assume-yes
+
 set +x
 
 visudo -cf /etc/sudoers.d/custom || echo "ERROR: The custom sudoers file syntax is wrong!"
